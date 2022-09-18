@@ -68,7 +68,7 @@
 
     <div>
         <div id="comment-tweet-{{ $tweet->id }}">
-          {{-- @include('comment_list') --}}
+          @include('comment_list')
       </div>
       {{ $tweet->created_at }}
       <hr>

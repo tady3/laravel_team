@@ -25,13 +25,11 @@ class CommentsController extends Controller
             'tweet_id' => $request['tweet_id'],
             'user_id' => auth()->user()->id,          //ログイン中のユーザのIDを取ってきてそれをDBに入れる
         ]); 
-
         
-        return redirect('comment_list', [
-            'comment' => $comment
-        ]);
+        return redirect('tweets-index');
     }
  
+
      public function destroy(Request $request)
      {
          $comment = Comment::find($request->comment_id);

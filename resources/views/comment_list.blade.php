@@ -1,10 +1,11 @@
 
-@foreach ($comment as $comment)
+@foreach ($tweet->comments as $comment)
   <div class="mb-2">
         <span>
             {{-- <strong>
                 <a class="no-text-decoration black-color" href="{{ route('users.show', ['nickname' => $comment->user->nickname]) }}">{{ $comment->user->nickname }}</a>
             </strong> --}}
+            {{ $comment->user->nickname }}
         </span>
         <span>{{ $comment->comment }}</span>
         @if ($comment->user->id == auth()->user()->id)

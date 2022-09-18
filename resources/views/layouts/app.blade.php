@@ -22,8 +22,7 @@
         {{-- TailWindのCSS読み込み --}}
         <link
         href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
-        rel="stylesheet"
-      />
+        rel="stylesheet"/>
 
       <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
       
