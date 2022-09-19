@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\FriendController; // 追記
 use App\Http\Controllers\CommentsController; // 追記
 use App\Http\Controllers\UserController; // 追記
 use App\Http\Controllers\TweetController; // 追記
@@ -44,8 +45,24 @@ Route::group(['middleware' => ['auth']], function () {
 
     //コメント取消処理
     Route::get('/comments/{comment_id}', [CommentsController::class,'destroy']);
+
+
+    //友達検索
     
-});
+    Route::get('/friend-search', [FriendController::class, 'search'])->name('friend.search');
+
+
+    Route::get('/friend-index', function () {
+        return view('friend-index');
+    })->name('friend.index');
+    
+
+    // Route::get('/test', function () {
+    // return view('test');
+    // });
+
+
+    });
 
     
 

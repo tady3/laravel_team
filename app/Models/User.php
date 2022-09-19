@@ -91,5 +91,12 @@ class User extends Authenticatable
 {
     return $this->hasMany(Comment::class);
 }
+
+    //Friendとのリレーション
+    public function friends()
+{
+    return $this->hasMany(friends::class);
+}
+
     
 }

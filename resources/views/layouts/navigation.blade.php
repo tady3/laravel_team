@@ -11,7 +11,7 @@
 
                 <div class="flex items-center space-x-4">
                     <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
-                        <div><img class="w-10 h-10 rounded-full" src="{{ '/storage/' . Auth::user()->img}}" alt="Rounded avatar">
+                        <div><img class="w-10 h-10 rounded-full" src="{{ '/storage/' . Auth::user()->img}}" alt="avatar">
                             <div class="font-medium dark:text-white">
                                 <div>{{ Auth::user()->nickname}}</div>
                             </div>
@@ -29,8 +29,8 @@
                     <x-nav-link :href="route('tweets.index')" :active="request()->routeIs('tweets.index')">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                     </x-nav-link>
-                    <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    <x-nav-link :href="route('friend.index')" :active="request()->routeIs('friend.index')">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
                     </x-nav-link>
 
                     <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
@@ -113,8 +113,8 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+            <x-responsive-nav-link :href="route('profile.index')" :active="request()->routeIs('friend.index')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
             </x-responsive-nav-link>
 
             

@@ -79,8 +79,12 @@ class DatabaseSeeder extends Seeder
 
                 \App\Models\User::create([
                     'name' => 'ぼやき太郎',
+                    'nickname' => 'ボヤッキー',
                     'email' => 'boyaki@example.com',
-                    'password' => bcrypt('password')
+                    'password' => bcrypt('password'),
+                    'search_id' => 'boyaboya',
+                    'age' => 4
+
                 ]);
     
 
