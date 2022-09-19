@@ -96,12 +96,16 @@ class DatabaseSeeder extends Seeder
                     'url' => 'https://meigen-onepiece.com/0145-02/',
                     'when' => '20代',
                     'story' => '学生時代、合コンまでの時間潰しの漫喫で、ヒルルク辞世の語りに一人で大号泣して、涙止まらんくなった。以来、ワンピースにハマって20年以上、今では子供と一緒に読んでる (^^;;',
-                    'rate' => 4
+                    'rate' => 4,
+                    'card_type_id' => 1
+                    
                 ]);
 
                 \App\Models\Tweet::create([
                     'message' => 'ぼやき太郎による投稿',
-                    'user_id' => 2
+                    'user_id' => 2,
+                    'card_type_id' => 1
+
                 ]);
 
                 // 追記終了

@@ -29,6 +29,9 @@ return new class extends Migration
             $table->integer('rate')->nullable(); 
             $table->string('img')->nullable();
             $table->boolean('published')->nullable(); 
+            $table->foreignId('card_type_id')->constrained(); 
+
+
 
 
 

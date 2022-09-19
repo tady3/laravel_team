@@ -11,6 +11,6 @@ class CardType extends Model
 
     public function tweets() 
 {
-    return $this->hasMany(Tweet::class); // ユーザはツイートを複数持てる
+    return $this->hasMany(Tweet::class); // CardTypeはツイートを複数持てる
 }
 }

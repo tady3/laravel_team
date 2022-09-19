@@ -78,6 +78,7 @@ class TweetController extends Controller
             'story' => $request['story'],
             'rate' => $request['rate'],
             'published' => $request['published'],
+            'card_type_id' => $request['card_type_id'],
             //多田追記、了
 
             'user_id' => auth()->user()->id,          //ログイン中のユーザのIDを取ってきてそれをDBに入れる
