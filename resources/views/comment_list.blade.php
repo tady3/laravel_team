@@ -23,7 +23,7 @@
                 </a>
         @endif
           </div>
-          <hr class="my-8 h-px bg-black-200 border-5 dark:bg-black-700">
+          <hr class="my-6 h-px bg-black-200  border-5 dark:bg-black-700">
 
 
   </div>

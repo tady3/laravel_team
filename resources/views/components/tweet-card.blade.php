@@ -92,7 +92,7 @@
               @csrf
               <input value="{{ $tweet->id }}" type="hidden" name="tweet_id" />
               <input value="{{ auth()->user()->id}}" type="hidden" name="user_id" />
-              <input class="form-control comment-input border-0" placeholder="コメント ..." autocomplete="off" type="text" name="comment" />
+              <input class="form-control comment-input border-0" placeholder="コメント ..." autocomplete="on" type="text" name="comment" />
           </form>
       </div>
       </div>
