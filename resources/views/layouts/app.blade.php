@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
         <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}" />
         <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}" defer></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
         <!-- Material Design for Bootstrap 読み込み 終了 -->
 
         {{-- TailWindのCSS読み込み --}}
@@ -24,7 +25,22 @@
         href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
         rel="stylesheet"/>
 
-      <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+        <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                extend: {
+                    fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                    },
+                }
+                }
+            }
+            </script>
 
       
       {{-- Tailwind 了 --}}
@@ -39,5 +55,7 @@
                 {{ $slot }}
             </main>
         </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     </body>
 </html>
