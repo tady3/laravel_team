@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>LiF Top </title>
+    <title>Selfly </title>
 
     <!-- Material Design for Bootstrap 読み込み 開始 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
@@ -20,9 +20,11 @@
         </div>
         <div class="col-12 col-lg-7">
             <div class="vh-100 d-flex flex-column justify-content-center px-4 px-lg-0">
-                <img src="/img/logo.jpg" alt="" style="width: 60px;" class="mt-5 mb-4">
-                <h1 class="font-weight-bold mb-4" style="font-size: 56px;">ジブンのスキがイチバン</h1>
-                <p class="fs-3 font-weight-bold">LiFで、スキなキブンにいつでも</p>
+                <img src="/img/logo.jpg" alt="" style="width: 150px;" class="mt-5 mb-4">
+                {{-- <p class="fs-3">fly your life with your love</p> --}}
+
+                <h1 class="font-weight-bold mb-3" style="font-size: 16px;">~ ジブンのスキで空を飛ぶ ~</h1>
+
                 <div>
                     @if (Route::has('login'))
                         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
