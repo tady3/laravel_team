@@ -101,9 +101,19 @@ class DatabaseSeeder extends Seeder
                     'img' =>'IMG_2815.jpg'
 
                 ]);
+
+                \App\Models\User::create([
+                    'name' => 'Shige',
+                    'nickname' => 'oshige',
+                    'email' => 'shige@example.com',
+                    'password' => bcrypt('password'),
+                    'search_id' => 'shige_id',
+                    'gender' => 1,
+                    'age' => 4,
+                    'img' =>'horyu_yakisoba.jpeg'
+
+                ]);
     
-
-
 
 
                 

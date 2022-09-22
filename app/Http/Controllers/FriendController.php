@@ -159,14 +159,13 @@ class FriendController extends Controller
         ->where([
             ['user_id_from', $user_id]
             ])->get();
-
         
         foreach($friendsfrom as $friendfrom)
         {
-        $test = User::find($friendfrom->user_id_to)->search_id;
+        $test1 = User::find($friendfrom->user_id_to)->search_id;
         // dd($test);
     
-        if ( $keyword == $test ) {die('すでに友達リストに存在します');}   
+        if ( $keyword == $test1 ) {die('すでに友達リストに存在します');}   
         else
         {
             $friendsto = Friend::with('user')
@@ -178,48 +177,28 @@ class FriendController extends Controller
 
             foreach($friendsto as $friendto)
             {
-           $test = User::find($friendto->user_id_from)->search_id;
-            // dd($test);
-        
-            if ( $keyword == $test ) {die('すでに友達リストに存在します');}   
-            else
-            {
-            $users = User::where('search_id', 'LIKE', $keyword)
-                ->get()          
-                ;
-            }}
-
-        }}
-
-
-
-        // $friendsto = Friend::with('user')
-        //     ->where([
-        //         ['user_id_to', $user_id]
-        //         ])
-        //         ->get();
-
-
-        //     foreach($friendsto as $friendto)
-        //     {
-        //    $test = User::find($friendto->user_id_from)->search_id;
-        //     // dd($test);
-        
-        //     if ( $keyword == $test ) {die('すでに友達リストに存在します');}   
-        //     else
-        //     {
-        //     $users = User::where('search_id', 'LIKE', $keyword)
-        //         ->get()          
-        //         ;
-        //     }}
-
-
-            return view('/friend-search', [
-            'users' => $users,
-            'keyword' => $keyword
-        ]);
+            $test2 = User::find($friendto->user_id_from)->search_id;
+                // dd($test);
+                if ( $keyword == $test2 ) {die('すでに友達リストに存在します');}   
+                else
+                {
+                    break 2;            //２重のforeachを抜けている
+                }
+            }
         }
     }
+
+    $users = User::where('search_id', 'LIKE', $keyword)
+    ->get();
+
+    // dd($users);
+
+    return view('/friend-search', [
+    'users' => $users,
+    'keyword' => $keyword
+    ]);
+    }
+}
         
         
        
