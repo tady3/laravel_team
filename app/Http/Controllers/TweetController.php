@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
+use App\Models\User;
 use App\Models\Tweet;
 use App\Models\CardLike; //cardlikeを追記
 use Illuminate\Http\Request;

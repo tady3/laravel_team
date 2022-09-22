@@ -99,7 +99,6 @@ class DatabaseSeeder extends Seeder
                     'gender' => 1,
                     'age' => 4,
                     'img' =>'IMG_2815.jpg'
-
                 ]);
 
                 \App\Models\User::create([
@@ -117,6 +116,19 @@ class DatabaseSeeder extends Seeder
 
 
                 
+                \App\Models\Tweet::create([
+                    'message' => 'よかった。病人はいねえのか。オレがダマされただけか。',
+                    'user_id' => 1,
+                    'bywho' => 'ドクターヒルルク',
+                    'source' => 'ワンピース',
+                    'url' => 'https://meigen-onepiece.com/0145-02/',
+                    'when' => '20代',
+                    'story' => '学生時代、合コンまでの時間潰しの漫喫で、ヒルルク辞世の語りに一人で涙止まらんくなった。以来、ワンピースにハマって20年以上、今では子供と一緒に読んでる (^^;;',
+                    'rate' => 4,
+                    'card_type_id' => 1
+                    
+                ]);
+
                 \App\Models\Tweet::create([
                     'message' => 'よかった。病人はいねえのか。オレがダマされただけか。',
                     'user_id' => 1,
