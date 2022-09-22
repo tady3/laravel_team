@@ -9,7 +9,7 @@ class Friend extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id_from','tweet_id_to','status'];
+    protected $fillable = ['user_id_from','user_id_to','status'];
 
     public function user()
     {

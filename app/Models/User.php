@@ -95,7 +95,7 @@ class User extends Authenticatable
     //Friendとのリレーション
     public function friends()
 {
-    return $this->hasMany(friends::class);
+    return $this->hasMany(Friend::class);
 }
 
     

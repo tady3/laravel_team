@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Friend;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FriendController extends Controller
 {
@@ -13,9 +15,47 @@ class FriendController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
-    }
+    {   
+        $user_id = Auth::User()->id;
+
+        $friendsfrom = Friend::with('user')
+        ->where([
+            ['user_id_from', $user_id],
+            ['status', 2]
+            ])
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        $friendsto = Friend::with('user')
+        ->where([
+            ['user_id_to', $user_id],
+            ['status', 2]
+            ])
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+
+
+        $friendsgo = Friend::with('user')
+            ->where([
+                ['user_id_from', $user_id],
+                ['status', 1]
+                ])
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+
+        $friendscome = Friend::with('user')
+            ->where([
+                ['user_id_to', $user_id],
+                ['status', 1]
+                ])
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+
+        return view('friend-index', compact('friendsfrom','friendsto','friendsgo','friendscome'));
+     }
 
     /**
      * Show the form for creating a new resource.
@@ -33,9 +73,19 @@ class FriendController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
     public function store(Request $request)
     {
-        //
+        $friend = Friend::create([
+            
+            'user_id_from' => auth()->user()->id,  
+            'user_id_to' => $request['user_id_to'],
+            'status' => $request['status']
+        ]); 
+                
+        return redirect()->route('friend.index');
+    
     }
 
     /**
@@ -44,9 +94,9 @@ class FriendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+
     }
 
     /**
@@ -67,9 +117,19 @@ class FriendController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Friend $friend)
     {
-        //
+        // dd($request);
+
+        $friend = Friend::with('user');//user_id_to,user_id_fromと連携させるのに必要？
+        $friend = Friend::find($request->id);//updateするfriendを特定するためにidが必要
+        $friend->update([
+            'status' => $request->status,
+    ]);
+
+
+
+    return redirect()->route('friend.index');
     }
 
     /**
@@ -90,21 +150,38 @@ class FriendController extends Controller
         // キーワードを取得
         
         $keyword = $request->keyword;
+        
 
-                // dd($keyword);
+        //         // dd($keyword);
+        // $user_id = Auth::User()->id;
+
+        // $friendfrom = Friend::with('user')
+        // ->where([
+        //     ['user_id_from', $user_id]
+        //     ]);
+
+        // $friendto = Friend::with('user')
+        //     ->where([
+        //         ['user_id_to', $user_id]
+        //         ]);
+
+        //     dd($friendto);
+                
+
+        // $f_table = User::get($friendto->user_id_from)->search_id;
+        
+
+        
+        // if ( strpos( $f_table, $keyword ) === false ) {
         $users = User::where('search_id', 'LIKE', $keyword)
-            ->get();
+            ->get()          
+            ;
         return view('/friend-search', [
             'users' => $users,
             'keyword' => $keyword
         ]);
     }
+    }
 
-
-    
-
-
-
-
-}
+// }
 

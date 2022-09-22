@@ -48,13 +48,20 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     //友達検索
-    
     Route::get('/friend-search', [FriendController::class, 'search'])->name('friend.search');
 
+    //友達申請リスト取得
+    Route::get('/friend-index', [FriendController::class, 'index'])->name('friend.index');
 
-    Route::get('/friend-index', function () {
-        return view('friend-index');
-    })->name('friend.index');
+    //友達申請
+    Route::post('/friend-index', [FriendController::class, 'store'])->name('friend.store');
+
+    //友達ステータス変更
+    Route::put('/friend-index/{friend_id}', [FriendController::class, 'update'])->name('friend.update');
+    
+    // Route::get('/friend-index', function () {
+    //     return view('friend-index');
+    // })->name('friend.index');
     
 
     // Route::get('/test', function () {

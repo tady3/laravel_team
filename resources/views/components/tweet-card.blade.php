@@ -34,9 +34,9 @@
 {{-- card_like部分 --}}
     <div>
         @if($tweet->is_liked_by_auth_user())
-          <a href="{{ route('tweet.unlike', ['id' => $tweet->id]) }}" class="btn btn-success btn-sm" data-tooltip-target="tooltip-default" >いいね<span class="badge">{{ $tweet->card_likes->count() }}</span></a>
+          <a href="{{ route('tweet.unlike', ['id' => $tweet->id]) }}" class="btn btn-success btn-sm" data-tooltip-target="tooltip-default" >わかる！<span class="badge">{{ $tweet->card_likes->count() }}</span></a>
         @else
-          <a href="{{ route('tweet.like', ['id' => $tweet->id]) }}" class="btn btn-secondary btn-sm"  >いいね<span class="badge">{{ $tweet->card_likes->count() }}</span></a>
+          <a href="{{ route('tweet.like', ['id' => $tweet->id]) }}" class="btn btn-secondary btn-sm"  >わかる！<span class="badge">{{ $tweet->card_likes->count() }}</span></a>
         @endif
       </div>
       <div id="tooltip-default" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">

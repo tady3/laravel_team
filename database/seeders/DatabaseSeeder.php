@@ -73,7 +73,8 @@ class DatabaseSeeder extends Seeder
                     'email' => 'test@example.com',
                     'password' => bcrypt('password'),
                     'gender' => 1,
-                    'age' => 5
+                    'age' => 5,
+                    'img' =>'IMG_6896.JPG'
 
                 ]);
 
@@ -83,7 +84,21 @@ class DatabaseSeeder extends Seeder
                     'email' => 'boyaki@example.com',
                     'password' => bcrypt('password'),
                     'search_id' => 'boyaboya',
-                    'age' => 4
+                    'gender' => 1,
+                    'age' => 4,
+                    'img' =>'スクリーンショット 2022-09-16 1.34.10.png'
+
+                ]);
+
+                \App\Models\User::create([
+                    'name' => 'Enoki',
+                    'nickname' => 'enoeno',
+                    'email' => 'enoki@example.com',
+                    'password' => bcrypt('password'),
+                    'search_id' => 'enoki_id',
+                    'gender' => 1,
+                    'age' => 4,
+                    'img' =>'IMG_2815.jpg'
 
                 ]);
     
@@ -99,20 +114,23 @@ class DatabaseSeeder extends Seeder
                     'source' => 'ワンピース',
                     'url' => 'https://meigen-onepiece.com/0145-02/',
                     'when' => '20代',
-                    'story' => '学生時代、合コンまでの時間潰しの漫喫で、ヒルルク辞世の語りに一人で大号泣して、涙止まらんくなった。以来、ワンピースにハマって20年以上、今では子供と一緒に読んでる (^^;;',
+                    'story' => '学生時代、合コンまでの時間潰しの漫喫で、ヒルルク辞世の語りに一人で涙止まらんくなった。以来、ワンピースにハマって20年以上、今では子供と一緒に読んでる (^^;;',
                     'rate' => 4,
                     'card_type_id' => 1
                     
                 ]);
 
                 \App\Models\Tweet::create([
-                    'message' => 'ぼやき太郎による投稿',
+                    'message' => 'ボチッとな',
                     'user_id' => 2,
+                    'rate' => 3,
                     'card_type_id' => 1
 
                 ]);
 
                 // 追記終了
+
+
 
     }
 }

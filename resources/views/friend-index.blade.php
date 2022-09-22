@@ -1,7 +1,7 @@
 <x-app-layout>
 
-
     <div class="container mt-4">
+        <div class="row justify-content-center">
         <form method="GET" action="/friend-search">  
             <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
             <div class="relative">
@@ -12,6 +12,240 @@
                 <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
             </div>
         </form>
+
+        <p class="font-weight-bold" style="font-size: 1.2rem;">　</p>
+        <div><h1 class="font-weight-bold" style="font-size: 1.4rem;">友達</h1>
+        <div class="flex flex-col">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-6">
+            <div class="py-1 inline-block min-w-6 sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                <table class="w-4">
+                    <thead class="border-b hidden">
+                    <tr>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($friendsfrom as $friend)
+                    <tr class="bg-white border-b">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <img class="w-10 h-10 rounded-full" src="{{ '/storage/' .  \App\Models\User::find($friend->user_id_to)->img }}" alt="avatar">
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            {{ \App\Models\User::find($friend->user_id_to)->nickname }}
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            
+                            <form action="/friend-index/{friend_id}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="flex space-x-2 justify-center">
+                                    <input value="{{ $friend->id }}" type="hidden" name="id" />
+                                    <input value="{{ auth()->user()->id}}" type="hidden" name="user_id_from" />
+                                    <input type="text" class="hidden" name="status" value="3">
+                                    <button
+                                    type="submit"
+                                    data-mdb-ripple="true"
+                                    data-mdb-ripple-color="light"
+                                    class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+                                    削除</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+
+                    @foreach ($friendsto as $friend)
+                    <tr class="bg-white border-b">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <img class="w-10 h-10 rounded-full" src="{{ '/storage/' .  \App\Models\User::find($friend->user_id_to)->img }}" alt="avatar">
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            {{ \App\Models\User::find($friend->user_id_from)->nickname }}
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            
+                            <form action="/friend-index/{friend_id}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="flex space-x-2 justify-center">
+                                    <input value="{{ $friend->id }}" type="hidden" name="id" />
+                                    <input value="{{ auth()->user()->id}}" type="hidden" name="user_id_from" />
+                                    <input type="text" class="hidden" name="status" value="3">
+                                    <button
+                                    type="submit"
+                                    data-mdb-ripple="true"
+                                    data-mdb-ripple-color="light"
+                                    class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+                                    削除</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+
+
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            </div>
+        </div>
+
     
+        <p class="font-weight-bold" style="font-size: 1.2rem;">　</p>
+        <div><h1 class="font-weight-bold" style="font-size: 1.4rem;">誘っている関係</h1>
+        @foreach ($friendsgo as $friend)
+        <div class="flex flex-col">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-6">
+            <div class="py-1 inline-block min-w-6 sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                <table class="w-4">
+                    <thead class="border-b hidden">
+                    <tr>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+
+                   
+
+                    <tr class="bg-white border-b">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <img class="w-10 h-10 rounded-full" src="{{ '/storage/' .  \App\Models\User::find($friend->user_id_to)->img }}" alt="avatar">
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            {{ \App\Models\User::find($friend->user_id_to)->nickname }}
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            
+                            <form action="/friend-index/{friend_id}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="flex space-x-2 justify-center">
+                                    <input value="{{ $friend->id }}" type="hidden" name="id" />
+                                    <input value="{{ auth()->user()->id}}" type="hidden" name="user_id_from" />
+                                    <input type="text" class="hidden" name="status" value="3">
+                                    <button
+                                    type="submit"
+                                    data-mdb-ripple="true"
+                                    data-mdb-ripple-color="light"
+                                    class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+                                    取消</button>
+                                </div>
+                            </form>
+                            
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            </div>
+        </div>
+        @endforeach
+
+    <p class="font-weight-bold" style="font-size: 1.2rem;">　</p>
+    <div><h1 class="font-weight-bold" style="font-size: 1.4rem;">誘われている関係</h1>
+        @foreach ($friendscome as $friend)
+
+        <div class="flex flex-col">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-1 inline-block min-w-6 sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                <table class="min-w-4">
+                    <thead class="border-b hidden">
+                    <tr>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr class="bg-white border-b">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <img class="w-10 h-10 rounded-full" src="{{ '/storage/' .  \App\Models\User::find($friend->user_id_from)->img }}" alt="avatar">
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            {{ \App\Models\User::find($friend->user_id_from)->nickname }}
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <form action="/friend-index/{friend_id}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="flex space-x-2 justify-center">
+                                    <input value="{{ $friend->id }}" type="hidden" name="id" />
+                                    <input value="{{ auth()->user()->id}}" type="hidden" name="user_id_to" />
+                                    <input type="text" class="hidden" name="status" value="2">
+                                    <button
+                                    type="submit"
+                                    data-mdb-ripple="true"
+                                    data-mdb-ripple-color="light"
+                                    class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+                                    承認</button>
+                                </div>
+                            </form>
+                        </td>
+
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <form action="/friend-index/{friend_id}" method="POST">
+                                @csrf
+                                @method('PUT')  
+                                <div class="flex space-x-2 justify-center">
+                                    <input value="{{ $friend->id }}" type="hidden" name="id" />
+                                    <input value="{{ auth()->user()->id}}" type="hidden" name="user_id_to" />
+                                    <input type="text" class="hidden" name="status" value="3">
+
+                                    <button
+                                    type="submit"
+                                    data-mdb-ripple="true"
+                                    data-mdb-ripple-color="light"
+                                    class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+                                    拒否</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            </div>
+        </div>
+        @endforeach
+
+
+
+
     </div>
+</div>
+
+
+
+
+
+
+
+
 </x-app-layout>

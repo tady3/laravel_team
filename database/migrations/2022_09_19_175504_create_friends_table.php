@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('friends', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id_from')->constrained();
-            $table->foreignId('tweet_id_to')->constrained();
+            $table->foreignId('user_id_to')->constrained('users');
             $table->integer('status');
             $table->timestamps();
         });
