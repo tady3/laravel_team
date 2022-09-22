@@ -153,35 +153,77 @@ class FriendController extends Controller
         
 
         //         // dd($keyword);
-        // $user_id = Auth::User()->id;
+        $user_id = Auth::User()->id;
 
-        // $friendfrom = Friend::with('user')
-        // ->where([
-        //     ['user_id_from', $user_id]
-        //     ]);
+        $friendsfrom = Friend::with('user')
+        ->where([
+            ['user_id_from', $user_id]
+            ])->get();
 
-        // $friendto = Friend::with('user')
+        
+        foreach($friendsfrom as $friendfrom)
+        {
+        $test = User::find($friendfrom->user_id_to)->search_id;
+        // dd($test);
+    
+        if ( $keyword == $test ) {die('すでに友達リストに存在します');}   
+        else
+        {
+            $friendsto = Friend::with('user')
+            ->where([
+                ['user_id_to', $user_id]
+                ])
+                ->get();
+
+
+            foreach($friendsto as $friendto)
+            {
+           $test = User::find($friendto->user_id_from)->search_id;
+            // dd($test);
+        
+            if ( $keyword == $test ) {die('すでに友達リストに存在します');}   
+            else
+            {
+            $users = User::where('search_id', 'LIKE', $keyword)
+                ->get()          
+                ;
+            }}
+
+        }}
+
+
+
+        // $friendsto = Friend::with('user')
         //     ->where([
         //         ['user_id_to', $user_id]
-        //         ]);
+        //         ])
+        //         ->get();
 
-        //     dd($friendto);
-                
 
-        // $f_table = User::get($friendto->user_id_from)->search_id;
+        //     foreach($friendsto as $friendto)
+        //     {
+        //    $test = User::find($friendto->user_id_from)->search_id;
+        //     // dd($test);
         
+        //     if ( $keyword == $test ) {die('すでに友達リストに存在します');}   
+        //     else
+        //     {
+        //     $users = User::where('search_id', 'LIKE', $keyword)
+        //         ->get()          
+        //         ;
+        //     }}
 
-        
-        // if ( strpos( $f_table, $keyword ) === false ) {
-        $users = User::where('search_id', 'LIKE', $keyword)
-            ->get()          
-            ;
-        return view('/friend-search', [
+
+            return view('/friend-search', [
             'users' => $users,
             'keyword' => $keyword
         ]);
+        }
     }
-    }
+        
+        
+       
+    
 
-// }
+
 

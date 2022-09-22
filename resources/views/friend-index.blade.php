@@ -35,12 +35,16 @@
                     <tbody>
                     @foreach ($friendsfrom as $friend)
                     <tr class="bg-white border-b">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                            <img class="w-10 h-10 rounded-full" src="{{ '/storage/' .  \App\Models\User::find($friend->user_id_to)->img }}" alt="avatar">
-                        </td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {{ \App\Models\User::find($friend->user_id_to)->nickname }}
-                        </td>
+                        
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                <img class="w-10 h-10 rounded-full" src="{{ '/storage/' .  \App\Models\User::find($friend->user_id_to)->img }}" alt="avatar">
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                <a href="/tweet-index/{{ \App\Models\User::find($friend->user_id_to)->id}}">
+                                {{ \App\Models\User::find($friend->user_id_to)->nickname }}
+                                </a>
+                            </td>
+                        
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             
                             <form action="/friend-index/{friend_id}" method="POST">
@@ -68,7 +72,9 @@
                             <img class="w-10 h-10 rounded-full" src="{{ '/storage/' .  \App\Models\User::find($friend->user_id_to)->img }}" alt="avatar">
                         </td>
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <a href="/tweet-index/{{ \App\Models\User::find($friend->user_id_from)->id}}">
                             {{ \App\Models\User::find($friend->user_id_from)->nickname }}
+                            </a>
                         </td>
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             
@@ -101,7 +107,7 @@
 
     
         <p class="font-weight-bold" style="font-size: 1.2rem;">　</p>
-        <div><h1 class="font-weight-bold" style="font-size: 1.4rem;">誘っている関係</h1>
+        <div><h1 class="font-weight-bold" style="font-size: 1.4rem;">{{ auth()->user()->nickname}}が誘っている人</h1>
         @foreach ($friendsgo as $friend)
         <div class="flex flex-col">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-6">
@@ -161,7 +167,7 @@
         @endforeach
 
     <p class="font-weight-bold" style="font-size: 1.2rem;">　</p>
-    <div><h1 class="font-weight-bold" style="font-size: 1.4rem;">誘われている関係</h1>
+    <div><h1 class="font-weight-bold" style="font-size: 1.4rem;">{{ auth()->user()->nickname}}を誘っている人</h1>
         @foreach ($friendscome as $friend)
 
         <div class="flex flex-col">
