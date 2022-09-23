@@ -30,20 +30,14 @@ return new class extends Migration
             $table->string('img')->nullable();
             $table->boolean('published')->nullable(); 
             $table->foreignId('card_type_id')->constrained(); 
-
-
-
-
-
             // <!-- 多田追記終了 -->
-    
-
-
             $table->timestamps(); // created_at と updated_at カラムを作ってくれる
 
         });
     }
 
+
+    
     /**
      * Reverse the migrations.
      *

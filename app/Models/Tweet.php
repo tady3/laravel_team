@@ -24,8 +24,8 @@ class Tweet extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    
-    //TweetとCardLikeのリレーション
+
+    //TweetとCardTypeのリレーション
     public function card_type()
     {
     return $this->belongsTo(CardType::class); // ツイートはtypeを１つ持てる
@@ -62,10 +62,18 @@ class Tweet extends Model
 
 
     //Tweetとコメントのリレーション
-
     public function comments() {
         return $this->hasMany(Comment::class); 
     }
+
+
+    //Tweetとcardlikeの制約を切るメソッド
+    public function deleteCardLike($tweet_id)
+    {
+      CardLike::where('tweet_id', '=', $tweet_id)->delete();
+    }
+  
+
 
 }
 

@@ -12,13 +12,19 @@ class CardLike extends Model
   // 配列内の要素を書き込み可能にする
   protected $fillable = ['tweet_id','user_id'];
 
-  public function tweet()
-  {
-    return $this->belongsTo(Tweet::class);
-  }
 
   public function user()
   {
     return $this->belongsTo(User::class);
   }
+
+
+  public function tweet()
+  {
+    return $this->belongsTo(Tweet::class);
+  }
+
+
+
+ 
 }

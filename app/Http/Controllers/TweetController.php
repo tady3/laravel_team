@@ -200,6 +200,8 @@ class TweetController extends Controller
      */
     public function destroy(Tweet $tweet)
     {   
+        $id=$tweet->id;
+        $tweet->deleteCardLike($id);
         $this->authorize('update', $tweet); 
         $tweet->tags()->detach(); //tweetを削除する際にtagとの関係性を一旦解除してから削除している
         $tweet->delete();
