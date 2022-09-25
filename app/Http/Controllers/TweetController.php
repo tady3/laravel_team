@@ -6,6 +6,7 @@ use App\Models\Tag;
 use App\Models\User;
 use App\Models\Tweet;
 use App\Models\CardLike; //cardlikeを追記
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class TweetController extends Controller
@@ -219,37 +220,51 @@ class TweetController extends Controller
 
         // キーワードを取得
         // $keyword = $request->keyword;
-        $tweets = Tweet::paginate(20); //ページネーション
-        $keyword = $request->get('keyword');
+        // $tweets = Tweet::paginate(20); //ページネーション
+        $keyword = $request->get('keyword');        
         $tweets = Tweet::with(['user', 'tags']);
         $query = Tweet::query();//Tweetモデルのクエリビルダを開始
+        $nt = 0;
 
-    if (isset($keyword)) {
-        $array_keywords = preg_split('/\s+/ui', $keyword, -1, PREG_SPLIT_NO_EMPTY); //スペース区切りでキーワードを配列に変換=複数キーワードを格納可能にしている
-        foreach ($array_keywords as $w) {
-            $escape_word = addcslashes($w, '\\_%');//エスケープ処理
-            $query = $query->where('message', 'LIKE', '%'.$escape_word .'%')
-            ->orwhere('bywho', 'LIKE', '%'.$escape_word .'%')
-            ->orwhere('source', 'LIKE', '%'.$escape_word .'%')
-            ->orwhere('when', 'LIKE', '%'.$escape_word .'%')
-            ->orwhere('story', 'LIKE', '%'.$escape_word .'%')
-            ->orWhereHas('tags', function ($tag_query) use ($escape_word ){
-                $tag_query->where('name', 'like', '%' . $escape_word  . '%');
-            })
-            ->orderBy('created_at', 'desc') // 追記          
-            ;  
+        if (isset($keyword)) 
+            {
+            $array_keywords = preg_split('/\s+/ui', $keyword, -1, PREG_SPLIT_NO_EMPTY); //複数キーワードをスペース区切った配列にする
+            $n = count($array_keywords); //入力された言葉の数を数える 
+            
+            $words = []; //配列を宣言
+            for ($i=0; $i<$n; $i++) {
+                $words[] = addcslashes(($array_keywords[$i]), '\\_%');    //入力した言葉をエスケープ化し、言葉を配列に入れるということを、入力した言葉の数だけ繰り返す
+            }
+            
+            $tweets=[];   //配列を宣言。複数キーワードがある場合、変数だと上書きされてしまうので、結果を一つずつ配列に入れたい。多次元配列になる。
+                foreach ($words as $w) {
+
+                    $query = $query->where('message', 'LIKE', '%'.$w .'%')
+                    ->orwhere('bywho', 'LIKE', '%'.$w .'%')
+                    ->orwhere('source', 'LIKE', '%'.$w .'%')
+                    ->orwhere('when', 'LIKE', '%'.$w .'%')
+                    ->orwhere('story', 'LIKE', '%'.$w .'%')
+                    ->orWhereHas('tags', function ($tag_query) use ($w )
+                        {
+                        $tag_query->where('name', 'like', '%' . $w  . '%');
+                        })
+                    ->orderBy('created_at', 'desc'); // 追記          
+                    }
+                  
+            $tweets[] = $query->get(); //検索結果が配列になったものをとってきている 
+
+            $nt=count($tweets[0]);   //検索結果の配列の数を数える。[0]を入れることで階層を一つ下げている。
+    
+            }
+        return view(
+            'search',
+            [    'keyword'=>$keyword,
+                'tweets' => $tweets,
+                'nt'=>$nt
+            ]
+        );
+
         }
-    }
-    $tweets = $query->paginate(20);//クエリビルダーの結果をゲット($wordがない場合全て取得)
-    return view(
-        'search',
-        [    'keyword'=>$keyword,
-            'tweets' => $tweets
-        ]
-    );
-
-
-    }
 
 
 //card_likes用の記述

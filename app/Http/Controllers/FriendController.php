@@ -153,12 +153,12 @@ class FriendController extends Controller
         
 
         //         // dd($keyword);
-        $user_id = Auth::User()->id;
+        $user_id = Auth::User()->id;    //ログインしているユーザーのユーザーIDを取得
 
         $friendsfrom = Friend::with('user')
         ->where([
             ['user_id_from', $user_id]
-            ])->get();
+            ])->get();                  //  user_id_fromにログインユーザーIDが入っているデータを全て配列として取得
         
         foreach($friendsfrom as $friendfrom)
         {

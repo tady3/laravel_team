@@ -13,12 +13,26 @@
     
         <div class="row justify-content-center">
             <div class="col-12 col-sm-12 col-md-10 col-lg-8">
-                @if($tweets->count() === 0)
+                @if($nt === 0)
                     <p>検索結果がありませんでした</p>
                 @else
-                    <p>{{ $tweets->count() }} 件の結果が見つかりました</p>
-                    @foreach($tweets as $tweet)
+                    <p>{{ $nt }} 件の結果が見つかりました</p>
+                    @foreach($tweets as $t)
+                        {{-- 「多次元配列」に入っているので
+                        {
+                            スラダン（0） => {
+                           　　　結果 ※tweet 
+                            }
+                           　ワンピース（1） => {
+                                結果 ※tweet
+                            }
+                           }
+                           階層を一つ掘って、userやtagとリレーションとっているtweetの層にアクセスするために、foreachを2回回す --}}
+                        @foreach($t as $tweet) 
+
                         <x-tweet-card :tweet="$tweet" />
+
+                        @endforeach
                     @endforeach
                 @endif
             </div>
