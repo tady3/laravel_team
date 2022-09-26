@@ -15,10 +15,10 @@ class CommentsController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(Tweet $tweet, Request $request)
     {
 
-        // dd($request);
+        $user_id = Tweet::find($request->tweet_id)->user_id; //tweetに紐づいたユーザーIDを取得
         
         $comment = Comment::create([
             'comment' => $request['comment'],          // データを新規作成            
@@ -26,7 +26,8 @@ class CommentsController extends Controller
             'user_id' => auth()->user()->id,          //ログイン中のユーザのIDを取ってきてそれをDBに入れる
         ]); 
         
-        return redirect('tweets-index');
+        return redirect(route('tweets.showTweetsIndex',[
+            'user'=> $user_id]));                      //tweet-index/user_idとして、投稿者の投稿一覧に戻っている
     }
  
 

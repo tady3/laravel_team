@@ -146,11 +146,8 @@ class FriendController extends Controller
 
     public function search(Request $request)
     {
-
-        // キーワードを取得
-        
+        // キーワードを取得   
         $keyword = $request->keyword;
-        
 
         //         // dd($keyword);
         $user_id = Auth::User()->id;    //ログインしているユーザーのユーザーIDを取得

@@ -26,7 +26,12 @@
       <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
         <div class="flex justify-between">
           <span class="text-xl font-semibold block">{{$user->nickname}}</span>
+
+          {{-- ↓ユーザーidがログインしているユーザーIDと一致している時だけ、Editボタンを表示する --}}
+          @if($user->id === auth()->user()->id)
           <a href="/profile/{{$user->id}}/edit" class="-mt-2 text-md font-bold text-white bg-gray-700 rounded-full px-5 py-2 hover:bg-gray-800">Edit</a>
+          @else <p></p>@endif
+
         </div>
         @if($user->gender === 1)<span>Male</span>@elseif($user->gender === 2)<span>Female</span>@else<span>Other</span>@endif
         /@if($user->age === 1)<span>10歳未満</span>@endif

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CardLike; //cardlikeを追記
+use App\Models\Tag;
+use App\Models\Tweet;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,14 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::where('id',auth()->user()->id)
-        //多田追記了
-
-        ->first(); //Eager Loadの描き方
-
-        return view('profile', [
-            'user' => $user
-        ]);
+        return redirect('profile/'.auth()->user()->id); 
     }
 
     /**
@@ -67,9 +63,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $user = User::where('id',auth()->user()->id)
+        $user = User::where('id',$id)
         //多田追記了
 
         ->first(); //Eager Loadの描き方
@@ -77,6 +73,7 @@ class UserController extends Controller
         return view('profile', [
             'user' => $user
         ]);
+
     }
 
     /**

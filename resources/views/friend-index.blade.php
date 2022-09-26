@@ -40,7 +40,7 @@
                                 <img class="w-10 h-10 rounded-full" src="{{ '/storage/' .  \App\Models\User::find($friend->user_id_to)->img }}" alt="avatar">
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                <a href="/tweet-index/{{ \App\Models\User::find($friend->user_id_to)->id}}">
+                                <a href="/tweets-index/{{ \App\Models\User::find($friend->user_id_to)->id}}">
                                 {{ \App\Models\User::find($friend->user_id_to)->nickname }}
                                 </a>
                             </td>
@@ -72,7 +72,7 @@
                             <img class="w-10 h-10 rounded-full" src="{{ '/storage/' .  \App\Models\User::find($friend->user_id_to)->img }}" alt="avatar">
                         </td>
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            <a href="/tweet-index/{{ \App\Models\User::find($friend->user_id_from)->id}}">
+                            <a href="/tweets-index/{{ \App\Models\User::find($friend->user_id_from)->id}}">
                             {{ \App\Models\User::find($friend->user_id_from)->nickname }}
                             </a>
                         </td>

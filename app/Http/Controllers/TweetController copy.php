@@ -18,19 +18,12 @@ class TweetController extends Controller
      */
     public function index()
     {
-      return redirect('tweets-index/'.auth()->user()->id); 
-
-    }
         // $tweets = Tweet::all(); //全て取ってくるというメソッド。
         
-
-
-    public function showTweetsIndex($id)
-    {
         $tweets = Tweet::with(['user','tags'])
         
         //多田追記
-        ->where('user_id',$id)
+        ->where('user_id',auth()->user()->id)
         //多田追記了
 
         ->orderBy('created_at','desc')
@@ -242,11 +235,14 @@ class TweetController extends Controller
             for ($i=0; $i<$n; $i++) {
                 $words[] = addcslashes(($array_keywords[$i]), '\\_%');    //入力した言葉をエスケープ化し、言葉を配列に入れるということを、入力した言葉の数だけ繰り返す
             }
-            
             $tweets=[];   //配列を宣言。複数キーワードがある場合、変数だと上書きされてしまうので、結果を一つずつ配列に入れたい。多次元配列になる。
+            $result=[]; 
+            $search_data=Tweet::where([['published',1]])->get();
+            foreach($search_data as $s){
+
+            
                 foreach ($words as $w) {
-                    // $search_data=Tweet::where([['published',1]])
-                    // ->where(function($query){ 
+
 
                     $query = $query->where('message', 'LIKE', '%'.$w .'%')
                     ->orwhere('bywho', 'LIKE', '%'.$w .'%')
@@ -257,13 +253,38 @@ class TweetController extends Controller
                         {
                         $tag_query->where('name', 'like', '%' . $w  . '%');
                         })
-                    ->orderBy('created_at', 'desc'); // 追記          
-                    };
-                // }
-                  
-            $tweets[] = $query->get(); //検索結果が配列になったものをとってきている 
+                    ->orderBy('created_at', 'desc'); // 追記   
+                    $result = $query->get(); //検索結果が配列になったものをとってきている
+                    // dd(count($result)); 
+                    if(count($result)>=1){
+                        // foreach($result as $res){
+                        //     if($res['id']==$s['id']){
+                                
+                        //         $tweets[]=$s['message'];};
+                        // }
 
-            $nt=count($tweets[0]);   //検索結果の配列の数を数える。[0]を入れることで階層を一つ下げている。
+                        for ($i=0; $i<count($result); $i++) 
+                        {
+                            if($result[$i]['id']==$s['id']){
+                                
+                            $tweets[]=$result[$i];};
+                            // dd($result[$i]['id']);
+                        }
+
+                    }
+                    // dump($tweets);
+
+                    // dd('aaaaa');
+                    // $tweets[] = $query->get();
+                    // if($s['id']==$result[0]['id']){
+                    //     $tweets[]=$result;
+                    // }
+                    // dd($result[0]['id']); //keywordが含まれないとエラーになる 
+                }
+                }
+                  
+                                
+            $nt=count($tweets);   //検索結果の配列の数を数える。[0]を入れることで階層を一つ下げている。
     
             }
         return view(
@@ -275,6 +296,7 @@ class TweetController extends Controller
         );
 
         }
+
 
 
 //card_likes用の記述

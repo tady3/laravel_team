@@ -4,7 +4,9 @@
   <div class="card card-body shadow-2 mb-2">
     <div class="d-flex justify-content-between">
         <p>
-            <span class="font-weight-bold mr-2">{{$tweet->user->nickname  }}</span>
+            <a href="/profile/{{ $tweet->user->id }}">
+                <span class="font-weight-bold mr-2">{{$tweet->user->nickname  }}</span>
+            </a>
             <span style="font-size: 0.8rem;">{{ $tweet->created_at }}</span>
         </p>
         <div class="d-flex" style="z-index:2">
@@ -28,7 +30,9 @@
         </div>
     </div>
     <p class="font-weight-bold" style="font-size: 1.4rem;">
-        <a href="{{ $tweet->url}}">{{ $tweet->message }}</a><br/>
+        <a href="{{ $tweet->url}}">{{ $tweet->message }}</a>
+        @if($tweet->published === 1)<span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">公開</span>@else<span></span>@endif
+        <br/>
     </p>
 
 {{-- card_like部分 --}}
@@ -88,7 +92,7 @@
       </div>
 
       <div class="row actions" id="comment-form-tweet-{{ $tweet->id }}">
-          <form class="w-100" id="new_comment" action="tweets-index/{tweet_id}/comments" accept-charset="UTF-8" data-remote="true" method="post">
+          <form class="w-100" id="new_comment" action="/tweets-index/{user}/{tweet_id}/comments" accept-charset="UTF-8" data-remote="true" method="post">
               @csrf
               <input value="{{ $tweet->id }}" type="hidden" name="tweet_id" />
               <input value="{{ auth()->user()->id}}" type="hidden" name="user_id" />

@@ -16,6 +16,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/tweets-index', [TweetController::class, 'index'])->name('tweets.index');
     Route::post('/tweets-index', [TweetController::class, 'store'])->name('tweets.store');
+    Route::get('/tweets-index/{user}', [TweetController::class, 'showTweetsIndex'])->name('tweets.showTweetsIndex');
 
     Route::get('/tweets-form', [TweetController::class, 'show']);
     Route::post('/tweets-form', [TweetController::class, 'store'])->name('tweets.store');
@@ -30,18 +31,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile', [UserController::class, 'index'])->name('profile.index');
     Route::get('/profile/{user}/edit', [UserController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/{user}', [UserController::class, 'update'])->name('profile.update');
-
+    Route::get('/profile/{user}', [UserController::class, 'show'])->name('profile.show'); 
 
     Route::get('/profile-upload', function () {return view('/profile-upload');});
     Route::post('/profile-upload', [UserController::class, 'store'])->name('profile.upload');
 
 
     Route::get('/tweets-index/like/{id}', [TweetController::class,'card_like'])->name('tweet.like');
-    Route::get('/tweet-index/unlike/{id}', [TweetController::class,'card_unlike'])->name('tweet.unlike');
+    Route::get('/tweets-index/unlike/{id}', [TweetController::class,'card_unlike'])->name('tweet.unlike');
 
 
     //コメント投稿処理
-    Route::post('/tweets-index/{tweet_id}/comments',[CommentsController::class,'store']);
+    Route::post('/tweets-index/{user}/{tweet_id}/comments',[CommentsController::class,'store']);
 
     //コメント取消処理
     Route::get('/comments/{comment_id}', [CommentsController::class,'destroy']);
