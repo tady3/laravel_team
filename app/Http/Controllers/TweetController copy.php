@@ -127,6 +127,8 @@ class TweetController extends Controller
         ]);
     }
 
+
+
     
     /**
      * Show the form for editing the specified resource.
@@ -159,7 +161,6 @@ class TweetController extends Controller
             // ツイートのメッセージ内容を更新
         $tweet->update([
             'message' => $request->message,
-
         //多田追記
             'bywho' => $request->bywho,
             'source' => $request->source,
@@ -169,9 +170,7 @@ class TweetController extends Controller
             'rate' => $request->rate,
             'published' => $request->published,
         //多田追記、了
-
     ]);
-    
     //ファイルアップロード（新規作成）
     $file_name = $request->file('img');
     if($request->hasFile('img')){
@@ -184,10 +183,7 @@ class TweetController extends Controller
         // }else{
         //     $img = null;
         }
-
         $this->authorize('update', $tweet); 
-
-
         // ツイートに紐づいているタグを更新
         $tweet->tags()->sync($request->tags);
         return redirect()->route('tweets.index');

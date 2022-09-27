@@ -22,10 +22,17 @@ return new class extends Migration
 
             // $table->foreignId('card_type_id')->nullable(); // 追記部分 VARCHAR(255) が作成される
             $table->string('bywho')->nullable(); // 追記部分 VARCHAR(255) が作成される
+            
+            $table->string('location')->nullable(); // Food用追記
+            $table->string('withwho')->nullable(); // Food用追記
+            $table->string('category')->nullable(); // Food用追記
+
             $table->string('source')->nullable(); // 追記部分 VARCHAR(255) が作成される
             $table->string('when')->nullable(); // 追記部分 VARCHAR(255) が作成される
             $table->string('url')->nullable(); // 追記部分 VARCHAR(255) が作成される
+            
             $table->string('story')->nullable(); // 追記部分 VARCHAR(255) が作成される
+
             $table->integer('rate')->nullable(); 
             $table->string('img')->nullable();
             $table->boolean('published')->nullable(); 

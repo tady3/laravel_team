@@ -6,25 +6,55 @@
                     @csrf
                     @method('PUT')
                     <div class="form-outline mb-2">
-                        <textarea class="form-control" id="text-area" rows="1" name="message" placeholder="コトバを書く: ">{{ $tweet->message }}</textarea>
-                        <label class="form-label" for="text-area">メッセージを入力</label>
+                        @if($tweet->card_type_id==1)
+                            <textarea class="form-control" id="text-area" rows="1" name="message" placeholder=" ">{{ $tweet->message }}</textarea>
+                            <label class="form-label" for="text-area">コトバを入力</label>
+                        @else
+                            <textarea class="form-control" id="text-area" rows="1" name="message" placeholder=" ">{{ $tweet->message }}</textarea>
+                            <label class="form-label" for="text-area">Foods or Drinks</label>
+                        @endif
+                            
                     </div>
                     
                     <!-- 多田追記 -->
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
-                        <div class="form-outline">
-                            <textarea class="form-control" id="text-area" rows="1" name="bywho" placeholder="誰のコトバ ? :">{{ $tweet->bywho }}</textarea>
-                        </div>
+                        
+                        @if($tweet->card_type_id==1)
+                            <div class="form-outline mb-2">
+                                <textarea class="form-control" id="text-area" rows="1" name="bywho" placeholder="">{{ $tweet->bywho }}</textarea>
+                                <label class="form-label" for="text-area">誰のコトバ？</label>
+                            </div>
+                        @else
+                        @endif
 
+    
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
                         <div class="form-outline">
-                            <textarea class="form-control" id="text-area" rows="1" name="source" placeholder="コトバの出所 ? :">{{ $tweet->source }}</textarea>
+                            <textarea class="form-control" id="text-area" rows="1" name="source" placeholder="">{{ $tweet->source }}</textarea>
+                        @if($tweet->card_type_id==1)    
+                            <label class="form-label" for="text-area">コトバの出所</label>
+                        @else
+                            <label class="form-label" for="text-area">店/場所の名前</label>
+                            
+                        @endif
+
+                        @if($tweet->card_type_id==2)
+                        
+                        <div class="form-outline mb-2">
+                            
+                            <textarea class="form-control" id="text-area" rows="1" name="location" placeholder="">{{ $tweet->location }}</textarea>
+                            <label class="form-label" for="text-area">ロケーション？</label>
+                        </div>
+                    @else
+                    @endif
+    
                         </div>       
                     <!-- 多田追記終了 -->
 
 
 
                     <!-- タグづけ用 -->
+                    @if($tweet->card_type_id==1)
                     <div class="form-outline mb-2">
                         @foreach($tags as $tag)
                             <div class="form-check form-check-inline">
@@ -35,18 +65,37 @@
                                         name="tags[]"
                                         value="{{$tag->id}}"
                                         {{  (in_array($tag->id, $selectedTags)) ?'checked':'' }}
+                                        {{-- チェックボックスをチェックさせて表示させる方法 --}}
                                 />
                                 <label class="form-check-label" for="tag-checkbox2">{{$tag->name}}</label>
                             </div>
                         @endforeach
                     </div>
+                    @else
+                    <div class="form-outline mb-2">
+                        <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox"  name="category" value="手作り" />
+                                <label class="form-check-label" for="tag-checkbox2">手作り</label>
+                        </div>
+                                <input class="form-check-input" type="checkbox"  name="category" value="外食" />          
+                                <label class="form-check-label" for="tag-checkbox2">外食</label>
+                                <input class="form-check-input" type="checkbox"  name="category" value="旅先" />
+                                <label class="form-check-label" for="tag-checkbox2">旅先</label>
+                                <input class="form-check-input" type="checkbox"  name="category" value="ラップアップ" />
+                                <label class="form-check-label" for="tag-checkbox2">ラップアップ</label>
+                                <input class="form-check-input" type="checkbox"  name="category" value="記念日" />
+                                <label class="form-check-label" for="tag-checkbox2">記念日</label>
+                        
+                      </div>
+                      @endif
+
+
 
                     <!-- 多田追記 -->
                         <select id="" name="when" class="">
                             <option value="{{ $tweet->when}}">
                                 
-                               @if(empty($tweet->when))<p>心に刺さった時期</p>@else<p>{{ $tweet->when }}</p>@endif</option>
-
+                               @if(empty($tweet->when))<p>スキになった時期</p>@else<p>{{ $tweet->when }}</p>@endif</option>
 
                             <option value="10歳未満">10歳未満</option>
                             <option value="10代">10代</option>
@@ -58,6 +107,22 @@
                             <option value="70代">70代</option>
                             <option value="80代以上">80代以上</option>
                         </select>
+
+                        @if($tweet->card_type_id==2)
+                        <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
+                        <select id="" name="withwho" class="">
+                            @if(empty($tweet->withwho))<p>誰と</p>@else<p>{{ $tweet->wihwho }}</p>@endif</option>
+                            <option value="一人で">一人で</option>
+                            <option value="友人・知人と">友人・知人と</option>
+                            <option value="家族と">家族と</option> 
+                            <option value="会合・集まり">会合・集まり</option>
+                        </select>
+                        @else
+                        @endif
+
+
+
+
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;"></p>
                         
                             <img id="showImage" class="max-w-xs w-32 items-center border" src="{{ '/storage/' . $tweet['img']}}" alt="">
@@ -71,18 +136,23 @@
 
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
                         <div class="form-outline">
-                            <textarea class="form-control" id="text-area" rows="1" name="url" placeholder="リンク先URL ?">{{ $tweet->url}}</textarea>
+                            <textarea class="form-control" id="text-area" rows="1" name="url" placeholder="?">{{ $tweet->url}}</textarea>
+                            <label class="form-label" for="text-area">リンク先URL</label>
                         </div>
                             
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
                         <div class="form-outline">
-                            <textarea class="form-control" id="text-area" rows="2" name="story" placeholder="コトバへの思い/コメント">{{ $tweet->story}}</textarea>
+                            <textarea class="form-control" id="text-area" rows="2" name="story" placeholder="">{{ $tweet->story}}</textarea>
+                            <label class="form-label" for="text-area">一言コメント</label>
                         </div>
 
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
-                        <select id="" name="rate" class="">
+                        <select id="select" name="rate" class="">
+                        
                             <option value="{{ $tweet->rate}}">  
-                            @if(empty($tweet->rate))<p>推し度★: 1〜5</p>@else<p>{{ $tweet->rate }}</p>@endif</option>
+                            @if(empty($tweet->rate))<p>★ジブンらしさ: 1〜5</p>
+                            @else<p>ジブンらしさ：{{ $tweet->rate }}</p>@endif</option>
+                           
 
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -90,6 +160,7 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
+
 
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
 
@@ -102,7 +173,7 @@
                             
                         
                             <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">友達に公開</span>
+                            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">公開</span>
                         </label>
                 
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
@@ -115,7 +186,9 @@
 
                     <div class="d-flex gap-3">
                         <a href="/tweets-index" class="btn btn-dark btn-block shadow-0">キャンセル</a>
+                        
                         <button type="submit" class="btn btn-primary btn-block shadow-0 mt-0">更新</button>
+
                     </div>
                 </form>
             </div>

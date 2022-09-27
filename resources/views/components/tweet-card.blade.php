@@ -59,18 +59,43 @@
     <img id="showImage" class="max-w-xs w-32 items-center border" src="{{'/storage/'. $tweet['img']}}" alt=""> 
 
     <p class="card-text">
-        #{{ $tweet->bywho}}　#{{ $tweet->source }}　#{{ $tweet->when}}<br/>
+        #{{ $tweet->source }}
+        　#@if($tweet->card_type_id==1){{ $tweet->bywho}}@else{{ $tweet->location}}@endif
+        @if($tweet->card_type_id==2)　#{{ $tweet->withwho}}@else @endif
+        　#{{ $tweet->when}}
+
+
+        
+        
+        <br/>
     </p>
 
                 
      {{-- tags 追記 --}}
+     @if($tweet->card_type=1)
      <div>
         @foreach($tweet->tags as $tag)
             <span class="badge badge-pill badge-primary">{{$tag->name}}</span>
         @endforeach
     </div>
     {{-- tags 追記完了 --}}
-    
+    @else 
+    <div class="form-outline mb-2">
+        <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox"  name="category" value="内食" />
+                <label class="form-check-label" for="tag-checkbox2">手作り</label>
+        </div>
+                <input class="form-check-input" type="checkbox"  name="category" value="外食" />          
+                <label class="form-check-label" for="tag-checkbox2">外食</label>
+                <input class="form-check-input" type="checkbox"  name="category" value="旅先" />
+                <label class="form-check-label" for="tag-checkbox2">旅先</label>
+                <input class="form-check-input" type="checkbox"  name="category" value="ラップアップ" />
+                <label class="form-check-label" for="tag-checkbox2">ラップアップ</label>
+                <input class="form-check-input" type="checkbox"  name="category" value="記念日" />
+                <label class="form-check-label" for="tag-checkbox2">記念日</label>
+      </div>
+    @endif
+
 
     <p class="font-weight-bold" style="font-size: 1.2rem;">　</p>
  

@@ -82,6 +82,12 @@ class TweetController extends Controller
             //多田追記
             'bywho' => $request['bywho'],
             'source' => $request['source'],
+
+            'withwho' => $request['withwho'],
+            'location' => $request['location'],
+            'category' => $request['category'],
+           
+
             'when' => $request['when'],
             'url' => $request['url'],
             'story' => $request['story'],
@@ -134,6 +140,18 @@ class TweetController extends Controller
         ]);
     }
 
+    public function showFoods()
+    {
+        // $tweets = Tweet::with(['user','tags'])
+        $tags = Tag::all();
+
+        // dd($tweets);
+
+        return view('tweets-food-form', [
+            'tags'=>$tags
+        ]);
+    }
+
     
     /**
      * Show the form for editing the specified resource.
@@ -170,6 +188,10 @@ class TweetController extends Controller
         //多田追記
             'bywho' => $request->bywho,
             'source' => $request->source,
+            'withwho' => $request->withwho,
+            'location' => $request->location,
+            'category' => $request->category,
+
             'when' => $request->when,
             'url' => $request->url,
             'story' => $request->story,

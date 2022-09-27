@@ -10,6 +10,8 @@
 
 
                 <div class="flex items-center space-x-4">
+                    <img src="/img/icon.png" alt="" style="width: 50px;" class="w-10 h-10 rounded-full">
+                    <br>
                     <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
                         <div><img class="w-10 h-10 rounded-full" src="{{ '/storage/' . Auth::user()->img}}" alt="avatar">
                             <div class="font-medium dark:text-white">

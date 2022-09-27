@@ -108,12 +108,10 @@ class DatabaseSeeder extends Seeder
                     'password' => bcrypt('password'),
                     'search_id' => 'shige_id',
                     'gender' => 1,
-                    'age' => 4,
+                    'age' => 5,
                     'img' =>'horyu_yakisoba.jpeg'
-
                 ]);
     
-
 
                 
                 \App\Models\Tweet::create([
@@ -125,19 +123,21 @@ class DatabaseSeeder extends Seeder
                     'when' => '20代',
                     'story' => '学生時代、合コンまでの時間潰しの漫喫で、ヒルルク辞世の語りに一人で涙止まらんくなった。以来、ワンピースにハマって20年以上、今では子供と一緒に読んでる (^^;;',
                     'rate' => 4,
+                    'published'=>1,
                     'card_type_id' => 1
                     
                 ]);
 
                 \App\Models\Tweet::create([
-                    'message' => 'よかった。病人はいねえのか。オレがダマされただけか。',
+                    'message' => '感情を捨てよ。',
                     'user_id' => 1,
-                    'bywho' => 'ドクターヒルルク',
-                    'source' => 'ワンピース',
-                    'url' => 'https://meigen-onepiece.com/0145-02/',
+                    'bywho' => '杉村太郎',
+                    'source' => 'アツイコトバ',
+                    'url' => 'https://www.amazon.co.jp/%E3%82%A2%E3%83%84%E3%82%A4%E3%82%B3%E3%83%88%E3%83%90-%E6%9D%89%E6%9D%91-%E5%A4%AA%E9%83%8E/dp/4806121207',
                     'when' => '20代',
-                    'story' => '学生時代、合コンまでの時間潰しの漫喫で、ヒルルク辞世の語りに一人で涙止まらんくなった。以来、ワンピースにハマって20年以上、今では子供と一緒に読んでる (^^;;',
+                    'story' => '故・杉村太郎さんの著書「アツイコトバ」。その中で20代に一番刺さった言葉',
                     'rate' => 4,
+                    'published'=>1,
                     'card_type_id' => 1
                     
                 ]);
