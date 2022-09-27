@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\FriendController; // 追記
 use App\Http\Controllers\CommentsController; // 追記
+use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\UserController; // 追記
 use App\Http\Controllers\TweetController; // 追記
 use Illuminate\Support\Facades\Route;
@@ -8,6 +9,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('top'); // welcome から top に変更
 });
+
+// Route::get('/auth/redirect', [GoogleLoginController::class, 'getGoogleAuth']);
+Route::get('/ridirect-to-google', [GoogleLoginController::class, 'getGoogleAuth']);
+// Route::get('/login/callback', [GoogleLoginController::class, 'authGoogleCallback']);
+Route::get('/callback', [GoogleLoginController::class, 'authGoogleCallback']);
+
 
 // グループで囲み、その中にエンドポイントを作成
 Route::group(['middleware' => ['auth']], function () {
