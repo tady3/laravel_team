@@ -1,10 +1,11 @@
 @props(["tweet"])
 
-<div>
+<div style="border-color: #ce3126">
   <div class="card card-body shadow-2 mb-2">
     <div class="d-flex justify-content-between">
         <p>
             <a href="/profile/{{ $tweet->user->id }}">
+                <span><img class="w-10 h-10 rounded-full" src="{{ '/storage/' . $tweet->user->img}}" alt="Rounded avatar"></span>
                 <span class="font-weight-bold mr-2">{{$tweet->user->nickname  }}</span>
             </a>
             <span style="font-size: 0.8rem;">{{ $tweet->created_at }}</span>
@@ -29,6 +30,11 @@
 
         </div>
     </div>
+    
+    <img id="showImage" class="max-w-xs w-60 items-center border" src="{{'/storage/'. $tweet['img']}}" alt=""> 
+    
+    <p class="font-weight-bold" style="font-size: 1.4rem;"></p>
+
     <p class="font-weight-bold" style="font-size: 1.4rem;">
         <a href="{{ $tweet->url}}">{{ $tweet->message }}</a>
         @if($tweet->published === 1)<span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">公開</span>@else<span></span>@endif
@@ -38,25 +44,24 @@
 {{-- card_like部分 --}}
     <div>
         @if($tweet->is_liked_by_auth_user())
-          <a href="{{ route('tweet.unlike', ['id' => $tweet->id]) }}" class="btn btn-success btn-sm" data-tooltip-target="tooltip-default" >わかる！<span class="badge">{{ $tweet->card_likes->count() }}</span></a>
+          <a href="{{ route('tweet.unlike', ['id' => $tweet->id]) }}" class="btn btn-success btn-sm" style="background-color: #ce3126;" data-tooltip-target="tooltip-default" >わかる！<span class="badge">{{ $tweet->card_likes->count() }}</span></a>
         @else
-          <a href="{{ route('tweet.like', ['id' => $tweet->id]) }}" class="btn btn-secondary btn-sm"  >わかる！<span class="badge">{{ $tweet->card_likes->count() }}</span></a>
+          <a href="{{ route('tweet.like', ['id' => $tweet->id]) }}" class="btn btn-secondary btn-sm " style="background-color: #252f5a" data-tooltip-target="tooltip-default" >わかる！<span class="badge">{{ $tweet->card_likes->count() }}</span></a>
         @endif
       </div>
       <div id="tooltip-default" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-        ここにLikeをしたユーザー名の一覧を表示させたい
-        {{-- @foreach ($tweet->card_likes as $card_like)
-                {{ $card_like->user->nickname }}
-        @endforeach --}}
-        <div class="tooltip-arrow" data-popper-arrow></div>
+       
+        {{-- @foreach ($tweet->card_likes as $card_like) --}}
+            @if ($tweet->id == $card_like->tweet_id) {{ $card_like->user->nickname }}
+            <div class="tooltip-arrow" data-popper-arrow></div>
+            @endif
+        {{-- @endforeach --}}
     </div>
 
 
 
 
     <p class="font-weight-bold" style="font-size: 0.8rem; color:blue">★ {{ $tweet->rate}}</p> 
-
-    <img id="showImage" class="max-w-xs w-32 items-center border" src="{{'/storage/'. $tweet['img']}}" alt=""> 
 
     <p class="card-text">
         #{{ $tweet->source }}
@@ -72,7 +77,7 @@
 
                 
      {{-- tags 追記 --}}
-     @if($tweet->card_type=1)
+     @if($tweet->card_type_id == 1)
      <div>
         @foreach($tweet->tags as $tag)
             <span class="badge badge-pill badge-primary">{{$tag->name}}</span>
@@ -96,10 +101,10 @@
       </div>
     @endif
 
+    <p class="font-weight-bold" style="font-size: 1.2rem;"></p>
 
-    <p class="font-weight-bold" style="font-size: 1.2rem;">　</p>
- 
-    <div style="background-color: #CFF3FE;">
+    <div style="background-color: #d0d7f3;">
+
         {{ $tweet->story}}
         </div>
     
@@ -124,7 +129,7 @@
               <input class="form-control comment-input border-0" placeholder="コメント ..." autocomplete="on" type="text" name="comment" />
           </form>
       </div>
-      </div>
+    </div>
 
 
 
