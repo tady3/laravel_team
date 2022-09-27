@@ -49,13 +49,13 @@
           <a href="{{ route('tweet.like', ['id' => $tweet->id]) }}" class="btn btn-secondary btn-sm " style="background-color: #252f5a" data-tooltip-target="tooltip-default" >わかる！<span class="badge">{{ $tweet->card_likes->count() }}</span></a>
         @endif
       </div>
-      <div id="tooltip-default" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-       
-        {{-- @foreach ($tweet->card_likes as $card_like) --}}
-            @if ($tweet->id == $card_like->tweet_id) {{ $card_like->user->nickname }}
+
+      <div id="tooltip-default" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">       
+        {{-- @foreach ($tweet->card_likes as $card_like)
+            @if ($tweet->id == $card_like->tweet_id) {{ $card_like->user->nickname }} --}}
             <div class="tooltip-arrow" data-popper-arrow></div>
-            @endif
-        {{-- @endforeach --}}
+            {{-- @endif
+        @endforeach --}}
     </div>
 
 
