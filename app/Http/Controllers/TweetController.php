@@ -41,12 +41,14 @@ class TweetController extends Controller
 
         // dd($tweets);
 
-        return view('tweets-index', [
-            'tweets' => $tweets,
-            'tags'=>$tags,
-            'card_likes' =>$card_likes //card_likesを追記
+        return view('tweets-index',compact('tweets','tags','card_likes')
+        //  [
+        //     'tweets' => $tweets,
+        //     'tags'=>$tags,
+        //     'card_likes' =>$card_likes //card_likesを追記
 
-        ]);
+        // ]
+    );
     }
 
     /**
@@ -341,6 +343,8 @@ class TweetController extends Controller
 
     return redirect()->back();
   }
+
+
 
 
 
