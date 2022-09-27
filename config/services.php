@@ -36,4 +36,8 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
     	'redirect' => env('GOOGLE_CALLBACK_URL'),
     ],
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6147ce46704c0b7b8ec22a907118d9740f5c4ebb
 ];
