@@ -254,7 +254,7 @@ class TweetController extends Controller
         // $tweets = Tweet::paginate(20); //ページネーション
         $keyword = $request->get('keyword');        
         $tweets = Tweet::with(['user', 'tags']);
-        $query = Tweet::query();//Tweetモデルのクエリビルダを開始
+        $query = Tweet::query()->where([['published',1]]);//Tweetモデルのクエリビルダを開始
         $nt = 0;
 
         if (isset($keyword)) 
@@ -274,8 +274,10 @@ class TweetController extends Controller
 
                     $query = $query->where('message', 'LIKE', '%'.$w .'%')
                     ->orwhere('bywho', 'LIKE', '%'.$w .'%')
-                    ->orwhere('source', 'LIKE', '%'.$w .'%')
-                    ->orwhere('when', 'LIKE', '%'.$w .'%')
+                    ->where('location', 'LIKE', '%'.$w .'%')
+                    ->where('withwho', 'LIKE', '%'.$w .'%')
+                    ->where('source', 'LIKE', '%'.$w .'%')
+                    ->where('when', 'LIKE', '%'.$w .'%')
                     ->orwhere('story', 'LIKE', '%'.$w .'%')
                     ->orWhereHas('tags', function ($tag_query) use ($w )
                         {
