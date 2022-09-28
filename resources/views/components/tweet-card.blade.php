@@ -35,13 +35,28 @@
     
     <p class="font-weight-bold" style="font-size: 1.4rem;"></p>
 
-    <p class="font-weight-bold" style="font-size: 1.4rem;">
-        <a href="{{ $tweet->url}}">{{ $tweet->message }}</a>
-        @if($tweet->published === 1)<span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">公開</span>@else<span></span>@endif
+    <p class="font-weight-bold" style="font-size: 1.4rem; color: #953037;">
+        <a href="{{ $tweet->url}}" style="text-decoration:underline;">
+            @if($tweet->card_type_id === 1)
+            👤 "{{ $tweet->message }}"
+            @else🍽 {{ $tweet->message }}
+            @endif
+        </a>
+        @if($tweet->published === 1)
+            <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
+                公開</span>
+        @else
+            <span>
+            </span>
+        @endif
         <br/>
     </p>
 
-{{-- card_like部分 --}}
+
+
+
+    <p class="font-weight-bold" style="font-size: 0.8rem; color:blue">★ {{ $tweet->rate}}</p> 
+    {{-- card_like部分 --}}
     <div>
         @if($tweet->is_liked_by_auth_user())
           <a href="{{ route('tweet.unlike', ['id' => $tweet->id]) }}" class="btn btn-success btn-sm" style="background-color: #ce3126;" data-tooltip-target="tooltip-default" >わかる！<span class="badge">{{ $tweet->card_likes->count() }}</span></a>
@@ -58,10 +73,6 @@
         @endforeach --}}
     </div>
 
-
-
-
-    <p class="font-weight-bold" style="font-size: 0.8rem; color:blue">★ {{ $tweet->rate}}</p> 
 
     <p class="card-text">
         #{{ $tweet->source }}
@@ -101,9 +112,10 @@
       </div>
     @endif
 
+    
     <p class="font-weight-bold" style="font-size: 1.2rem;"></p>
 
-    <div style="background-color: #d0d7f3;">
+    <div class="bg-blue-100 text-black-800 text-s font-semibold mr-2 px-3.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800" >
 
         {{ $tweet->story}}
         </div>
