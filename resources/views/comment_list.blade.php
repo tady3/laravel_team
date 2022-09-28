@@ -8,7 +8,9 @@
           <span><img class="w-10 h-10 rounded-full" src="{{ '/storage/' . $comment->user->img}}" alt="Rounded avatar"></span>
           <span class="text-gray-900 leading-none">{{ $comment->user->nickname }}</span>
 
-          <div class="mb-4 ">
+          <div class="w-60 mb-4 bg-blue-100 text-black-800 text-s mr-2 px-3.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
+          {{-- <div class="bg-blue-100 text-black-800 text-s font-semibold mr-2 px-3.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800" > --}}
+
             <span class="text-gray-700 text-base ">{{ $comment->comment }}</span>                   
             <p class="text-gray-600"> :{{ $comment->created_at }}</p>
           

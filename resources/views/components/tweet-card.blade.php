@@ -1,6 +1,6 @@
 @props(["tweet"])
 
-<div style="border-color: #ce3126">
+<div style="">
   <div class="card card-body shadow-2 mb-2">
     <div class="d-flex justify-content-between">
         <p>
@@ -124,7 +124,7 @@
 
     <p class="font-weight-bold" style="font-size: 1.2rem;">　</p>
 
-    <div><h1 class="font-weight-bold" style="font-size: 1.4rem;">Comment</h1>
+    <div><h1 class="font-weight-bold" style="font-size: 1.4rem;">Comments</h1>
 
         <p class="font-weight-bold" style="font-size: 1.2rem;">　</p>
 

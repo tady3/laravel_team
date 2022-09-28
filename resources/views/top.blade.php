@@ -16,11 +16,11 @@
 <body class="vh-100">
     <div class="row">
         <div class="d-none d-lg-block col-lg-5">
-            <img src="{{ asset('img/top.jpg') }}" alt="" class="w-100 vh-100" style="object-fit: cover;">
+            <img src="{{ asset('img/top.jpg') }}" alt=""  style="object-fit: cover; height:auto; width:auto;">
         </div>
-        <div class="col-12 col-lg-7">
+        <div class="col-12 col-lg-5">
             <div class="vh-100 d-flex flex-column justify-content-center px-4 px-lg-0">
-                <img src="/img/logo.jpg" alt="" style="width: 150px;" class="mt-5 mb-4">
+                <img src="/img/logo.jpg" alt=""  style="width: 150px; opacity:0.75; border-radius:100px;" class="mt-5 mb-4">
                 {{-- <p class="fs-3">fly your life with your love</p> --}}
 
                 <h1 class="font-weight-bold mb-3" style="font-size: 16px;">~ ジブンのスキで空を飛ぶ ~</h1>
