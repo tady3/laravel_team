@@ -42,19 +42,23 @@ class DatabaseSeeder extends Seeder
 				\App\Models\Tag::create([
                     'name' => '漫画'
                 ]);
-        
                 \App\Models\Tag::create([
                     'name' => '本'
                 ]);
-        
+                \App\Models\Tag::create([
+                    'name' => '雑誌'
+                ]);
                 \App\Models\Tag::create([
                     'name' => '映画'
+                ]);
+                \App\Models\Tag::create([
+                    'name' => 'TV'
                 ]);
                 \App\Models\Tag::create([
                     'name' => '歌'
                 ]);
                 \App\Models\Tag::create([
-                    'name' => 'web'
+                    'name' => 'ネット'
                 ]);
                 \App\Models\Tag::create([
                     'name' => '会話'
@@ -86,7 +90,7 @@ class DatabaseSeeder extends Seeder
                     'search_id' => 'boyaboya',
                     'gender' => 1,
                     'age' => 4,
-                    'img' =>'スクリーンショット 2022-09-16 1.34.10.png'
+                    'img' =>'スクリーンショット 2022-09-16 1.34.10.png',
 
                 ]);
 
@@ -98,7 +102,7 @@ class DatabaseSeeder extends Seeder
                     'search_id' => 'enoki_id',
                     'gender' => 1,
                     'age' => 4,
-                    'img' =>'IMG_2815.jpg'
+                    'img' =>'IMG_2815.jpg',
                 ]);
 
                 \App\Models\User::create([
@@ -124,7 +128,10 @@ class DatabaseSeeder extends Seeder
                     'story' => '学生時代、合コンまでの時間潰しの漫喫で、ヒルルク辞世の語りに一人で涙止まらんくなった。以来、ワンピースにハマって20年以上、今では子供と一緒に読んでる (^^;;',
                     'rate' => 4,
                     'published'=>1,
-                    'card_type_id' => 1
+                    'card_type_id' => 1,
+                    'img' =>'スクリーンショット 2022-09-01 16.46.12.png',
+
+                    
                     
                 ]);
 
@@ -138,17 +145,52 @@ class DatabaseSeeder extends Seeder
                     'story' => '故・杉村太郎さんの著書「アツイコトバ」。その中で20代に一番刺さった言葉',
                     'rate' => 4,
                     'published'=>1,
-                    'card_type_id' => 1
+                    'card_type_id' => 1,
                     
                 ]);
 
                 \App\Models\Tweet::create([
-                    'message' => 'ボチッとな',
+                    'message' => 'だんだんめん。',
+                    'user_id' => 1,
+                    'withwho' => 1,
+                    'source' => 'はしご',
+                    'location' => '新富町',
+                    'url' => 'https://tabelog.com/imgview/original?id=r659603336304',
+                    'when' => '30代',
+                    'story' => '+ライス、餃子、ビールで最高の背徳感！！',
+                    'rate' => 4,
+                    'published'=>0,
+                    'card_type_id' => 2,
+                    'img' =>'hashigo_dandan 2022-07-25 150713.png',
+                    
+                ]);
+
+
+                
+
+                \App\Models\Tweet::create([
+                    'message' => 'ポチッとな',
                     'user_id' => 2,
+                    'bywho' => 'ボヤッキー',
+                    'source' => 'ヤッターマン',
                     'rate' => 3,
-                    'card_type_id' => 1
+                    'card_type_id' => 1,
+                    'published'=>1,
 
                 ]);
+
+
+                \App\Models\Tweet::create([
+                    'message' => 'やられてもやられてもなんでもなーいない',
+                    'user_id' => 2,
+                    'bywho' => 'ドロンボ一味',
+                    'source' => 'ヤッターマン',
+                    'rate' => 3,
+                    'card_type_id' => 1,
+                    'published'=>0,
+
+                ]);
+
 
                 // 追記終了
 
