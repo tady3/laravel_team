@@ -152,14 +152,16 @@ class FriendController extends Controller
         //         // dd($keyword);
         $user_id = Auth::User()->id;    //ログインしているユーザーのユーザーIDを取得
 
-        $friendsfrom = Friend::with('user')
+        $friendsfrom = Friend::with('user') //FriendテーブルとUserテーブルを合体
         ->where([
             ['user_id_from', $user_id]
-            ])->get();                  //  user_id_fromにログインユーザーIDが入っているデータを全て配列として取得
+            ])->get();                  //  user_id_fromにユーザーIDが入っているデータを全て配列として取得
         
         foreach($friendsfrom as $friendfrom)
         {
         $test1 = User::find($friendfrom->user_id_to)->search_id;
+        //user_id_from（友達に誘った側の人）にIDが入っているデータの、user_id_to（誘われている人）のsearch_idを取得している
+        
         // dd($test);
     
         if ( $keyword == $test1 ) {die('すでに友達リストに存在します');}   
