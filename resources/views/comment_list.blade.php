@@ -8,11 +8,20 @@
           <span><img class="w-10 h-10 rounded-full" src="{{ '/storage/' . $comment->user->img}}" alt="Rounded avatar"></span>
           <span class="text-gray-900 leading-none">{{ $comment->user->nickname }}</span>
 
+
+          @if($comment->user->id == auth()->user()->id)
           <div class="w-60 mb-4 bg-blue-100 text-black-800 text-s mr-2 px-3.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
-         
             <span class="text-gray-700 text-base ">{{ $comment->comment }}</span>                   
             <p class="text-gray-600"> :{{ $comment->created_at }}</p>
           </div>
+          @else
+          <div class="w-60 mb-4 bg-red-100 text-black-800 text-s mr-2 px-3.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
+            <span class="text-gray-700 text-base ">{{ $comment->comment }}</span>                   
+            <p class="text-gray-600"> :{{ $comment->created_at }}</p>
+          </div>
+
+          @endif
+
             
           {{-- コメント削除 --}}
             @if ($comment->user->id == auth()->user()->id)
