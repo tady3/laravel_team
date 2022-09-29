@@ -19,7 +19,7 @@
 
 <div class="h-full">
  
-    <div class="border-b-2 block md:flex justify-content-center">
+    <div class="border-b-2 block md:flex ">
   
       <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md ">
 
