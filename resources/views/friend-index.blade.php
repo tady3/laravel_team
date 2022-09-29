@@ -65,7 +65,7 @@
                     @foreach ($friendsto as $friend)
                     <tr class="bg-white border-b">
                         <td class="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                            <img class="w-10 h-10 rounded-full" src="{{ '/storage/' .  \App\Models\User::find($friend->user_id_to)->img }}" alt="avatar">
+                            <img class="w-10 h-10 rounded-full" src="{{ '/storage/' .  \App\Models\User::find($friend->user_id_from)->img }}" alt="avatar">
                         </td>
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             <a href="/tweets-index/{{ \App\Models\User::find($friend->user_id_from)->id}}">
