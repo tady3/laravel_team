@@ -6,9 +6,20 @@
 <div class="hidden">
     <textarea class="form-control" id="text-area" rows="1" name="card_type_id">2</textarea>
 </div>
-<img src="/img/logo.jpg" alt="" style="width: 100px;" class="mt-5 mb-4">
+<div class="flex justify-content-center">
+  <img src="/img/icon.png" alt="" style="width: 40px;" class="mt-2 mb-2" style="margin :0,0,0,auto;">
+  <img src="/img/icon.png" alt="" style="width: 40px;" class="mt-2 mb-2" style="margin :0,0,0,auto;">
+  <img src="/img/icon.png" alt="" style="width: 40px;" class="mt-2 mb-2" style="margin :0,0,0,auto;">
+  <img src="/img/icon.png" alt="" style="width: 40px;" class="mt-2 mb-2" style="margin :0,0,0,auto;">
+  <img src="/img/icon.png" alt="" style="width: 40px;" class="mt-2 mb-2" style="margin :0,0,0,auto;">
+  <img src="/img/icon.png" alt="" style="width: 40px;" class="mt-2 mb-2" style="margin :0,0,0,auto;">
+  <img src="/img/icon.png" alt="" style="width: 40px;" class="mt-2 mb-2" style="margin :0,0,0,auto;">
+</div>
+
+
+
 <div class="mb-2">
-    <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 1.6rem;">「らしさ」を彩る「スキ」なFoods & Drinks 🍽</p>
+    <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 1.6rem; text-align: center ">「らしさ」を彩る「スキ」なFoods & Drinks 🍽</p>
     
     <div class="form-outline">
         <textarea class="form-control" id="text-area" rows="1" name="message" placeholder="料理名: カルボナーラ">{{old('message')}}</textarea>
@@ -143,7 +154,7 @@
 
     <div class="row justify-content-center">
       <button type="submit" class=" flex justify-content-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-        Save</button>
+        保存</button>
     </div>
 
 </form>
