@@ -10,7 +10,7 @@
 
 <img src="/img/logo.jpg" alt="" style="width: 100px;" class="mt-5 mb-4">
 <div class="mb-2">
-    <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 1.6rem;">「スキ」を可視化して「ジブンらしさ」を再発見 💟</p>
+    <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 1.6rem;">ジブンを築いたスキな「コトバ」を可視化 </p>
 
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>    
     <div class="form-outline">
