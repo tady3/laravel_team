@@ -9,6 +9,7 @@ use App\Models\CardLike; //cardlikeを追記
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
+
 class TweetController extends Controller
 {
     /**
@@ -28,43 +29,37 @@ class TweetController extends Controller
     public function showTweetsIndex($id)
     {   
         $user_id = auth()->user()->id;
-        $usr_id=stripslashes($user_id); 
+
+        //$idの中身が"user_id"でダブルクオテーションがどうしてもエスケープできなかったので、user_idにダブルクォテーションをつけた
+        $usr_id = stripslashes($user_id); 
+        
         $tweets = Tweet::with(['user','tags']);
-        $query = Tweet::query()->where([['published',1]]);//Tweetモデルのクエリビルダを開始
 
+        //Tweetモデルのクエリビルダを開始。queryにしないと、orderByやgetが謎にエラーが出てしまう
+        $query = Tweet::query()->where([['published',1]]);
 
-        if($id==$user_id)
+        if($id==$user_id)           //表示ページの投稿者IDとログインしているユーザーのIDが一致してたら
         {
         $tweets = $tweets
         ->where('user_id',$id)
 
         ->orderBy('created_at','desc')
         ->get(); //Eager Loadの描き方
+
         }
         else
         {
             $tweets=$query->where('user_id',$id)
     
-            // ->orderBy('created_at','desc')
+            ->orderBy('created_at','desc')
             ->get(); //Eager Loadの描き方
     
         }
-
-
-
         $tags = Tag::all();
         $card_likes =CardLike::all(); //card_likesから全て取ってくる
 
-        // dd($tweets);
-
         return view('tweets-index',compact('tweets','tags','card_likes')
-        //  [
-        //     'tweets' => $tweets,
-        //     'tags'=>$tags,
-        //     'card_likes' =>$card_likes //card_likesを追記
-
-        // ]
-    );
+       );
     
     }
 
@@ -73,9 +68,14 @@ class TweetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function showThumbnail(Tweet $tweet)
     {
-        //
+
+
+        return view('tweets-index',compact('title','image')
+    );
+        
+
     }
 
     /**
