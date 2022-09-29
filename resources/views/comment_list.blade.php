@@ -9,26 +9,24 @@
           <span class="text-gray-900 leading-none">{{ $comment->user->nickname }}</span>
 
           <div class="w-60 mb-4 bg-blue-100 text-black-800 text-s mr-2 px-3.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
-          {{-- <div class="bg-blue-100 text-black-800 text-s font-semibold mr-2 px-3.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800" > --}}
-
+         
             <span class="text-gray-700 text-base ">{{ $comment->comment }}</span>                   
             <p class="text-gray-600"> :{{ $comment->created_at }}</p>
-          
+          </div>
+            
           {{-- コメント削除 --}}
             @if ($comment->user->id == auth()->user()->id)
-              <span>
-                <a class="delete-comment" data-remote="true" rel="nofollow" data-method="delete" href="/comments/{{ $comment->id }}">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" data-tooltip-target="tooltip-default2"></path></svg>
+                <a class=" delete-comment" data-remote="true" rel="nofollow" data-method="delete" href="/comments/{{ $comment->id }}">
+                    <svg class=" -mt-5 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" data-tooltip-target="tooltip-default2"></path></svg>
                     <div id="tooltip-default2" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
                   コメント削除
                       <div class="tooltip-arrow" data-popper-arrow>
                       </div>
                     </div>
                 </a>
-              </span>
             @endif
       {{-- コメント削除了 --}}
-          </div>
+          
         </div>
         <hr class="my-6 h-px bg-black-200  border-5 dark:bg-black-700">
     </div>
