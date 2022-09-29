@@ -15,37 +15,37 @@
 
 </head>
 <body>
-  
-<!-- This is an example component -->
 
 
 <div class="h-full">
  
-    <div class="border-b-2 block md:flex">
+    <div class="border-b-2 block md:flex justify-content-center">
   
-      <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
-        <div class="flex">
+      <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md ">
+
+        <div style="float: right;">
           {{-- ↓ユーザーidがログインしているユーザーIDと一致している時だけ、Editボタンを表示する --}}
             @if($user->id === auth()->user()->id)
-          <a href="/profile/{{$user->id}}/edit" class="-mt-2 text-md font-bold text-white bg-gray-700 rounded-full px-5 py-2 hover:bg-gray-800">Edit</a>
+          <a href="/profile/{{$user->id}}/edit" class=" -mt-2 text-md font-bold text-white bg-gray-700 rounded-full px-4 py-1 hover:bg-gray-800">Edit</a>
           @else <p></p>@endif
-
         </div>  
 
-        <span class="text-xl font-semibold block">{{$user->nickname}}</span>
+        <div class="center" style="text-align:center;clear: both; ">  
+            <span class="text-xl font-semibold block">{{$user->nickname}}</span>
 
-        @if($user->gender === 1)<span>Male</span>@elseif($user->gender === 2)<span>Female</span>@else<span>Other</span>@endif
-        /@if($user->age === 1)<span>10歳未満</span>@endif
-        @if($user->age === 2)<span>10代</span>@endif
-        @if($user->age === 3)<span>20代</span>@endif
-        @if($user->age === 4)<span>30代</span>@endif
-        @if($user->age === 5)<span>40代</span>@endif
-        @if($user->age === 6)<span>50代</span>@endif
-        @if($user->age === 7)<span>60代</span>@endif
-        @if($user->age === 8)<span>70代</span>@endif
-        @if($user->age === 9)<span>80代以上</span>@endif
-        / {{$user->industry}}                          
+            @if($user->gender === 1)<span>Male</span>@elseif($user->gender === 2)<span>Female</span>@else<span>Other</span>@endif
+            /@if($user->age === 1)<span>10歳未満</span>@endif
+            @if($user->age === 2)<span>10代</span>@endif
+            @if($user->age === 3)<span>20代</span>@endif
+            @if($user->age === 4)<span>30代</span>@endif
+            @if($user->age === 5)<span>40代</span>@endif
+            @if($user->age === 6)<span>50代</span>@endif
+            @if($user->age === 7)<span>60代</span>@endif
+            @if($user->age === 8)<span>70代</span>@endif
+            @if($user->age === 9)<span>80代以上</span>@endif
+            / {{$user->industry}}                          
         
+      </div>
         
         <div class="w-full p-8 mx-2 flex justify-center">
     
@@ -53,7 +53,7 @@
         
         </div>
         
-        <div class="w-48 text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+        <div style="margin:0 auto" class="w-48 text-gray-900 bg-white rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
           <button type="button" class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium rounded-t-lg border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
 

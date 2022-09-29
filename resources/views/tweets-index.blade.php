@@ -18,7 +18,7 @@
                 <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                 <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
-            <input type="search" id="default-search" class="block p-4 pl-10 w-full text-sm bg--50 text-blue-800 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  placeholder="  投稿を検索" name="keyword" value="@if (isset($search)) {{ $search }} @endif">
+            <input type="search" id="default-search" class=" py-3 block p-8 pl-10 w-full text-sm bg--50 text-blue-800 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  placeholder="投稿を検索" name="keyword" value="@if (isset($search)) {{ $search }} @endif">
             <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style="background-color:#252f5a">
                 Search</button>
         </div>
@@ -27,10 +27,9 @@
 </div>
 
 
-
      <div class="row justify-content-center">
         <button type="button"
-          class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-white focus:outline-none  rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600  w-64" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-color:#252f5a ">
+          class=" mt-3 py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-white bg-blue-700 focus:outline-none  rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600  w-64" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  >
             + Post New collection
         </button>
     </div>

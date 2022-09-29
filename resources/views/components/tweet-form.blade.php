@@ -1,4 +1,5 @@
 @props (['tags'])
+
 <form action="/tweets-form" method="POST" class="card card-body shadow-2 mb-3" enctype="multipart/form-data">
 
   @csrf  
@@ -6,6 +7,7 @@
 <div class="hidden">
     <textarea class="form-control" id="text-area" rows="1" name="card_type_id">1</textarea>
 </div>
+
 <img src="/img/logo.jpg" alt="" style="width: 100px;" class="mt-5 mb-4">
 <div class="mb-2">
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 1.6rem;">「スキ」を可視化して「ジブンらしさ」を再発見 💟</p>
@@ -13,11 +15,9 @@
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>    
     <div class="form-outline">
         <textarea class="form-control" id="text-area" rows="1" name="message" placeholder="コトバを書く: オラ悟空">{{old('message')}}</textarea>
-          <!-- 以下を追記 -->
             @error('message')
-            <div class="form-helper text-danger">{{$message}}</div>
+        <div class="form-helper text-danger">{{$message}}</div>
             @enderror
-            <!-- 追記終了 -->
     </div>
 
         <!-- 多田追記 -->
@@ -27,7 +27,6 @@
         <textarea class="form-control" id="text-area" rows="1" name="bywho" placeholder="誰のコトバ ? : 孫悟空">{{old('bywho')}}</textarea>
     </div>
 
-  
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
     
     <div class="form-outline">
@@ -100,15 +99,13 @@
         <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">公開</span>
     </label>
 
-    
-
-
-
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
 
     <!-- 多田追記終了 -->
 
-  <button type="submit" class="btn btn-primary btn-lg btn-block shadow-0 font-weight-bold">
-      Save
-  </button>
+    <div class="row justify-content-center">
+        <button type="submit" class=" flex justify-content-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          Save</button>
+      </div>
+
 </form>

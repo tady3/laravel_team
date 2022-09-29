@@ -58,18 +58,18 @@
 
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Gender</label>
             <select id="base-input" name="gender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              <option value="{{$user->gender}}"> @if($user->gender === 1)<p>Male</p>@elseif($user->gender === 2)
-                <p>Female</p>@else<p>Other</p>@endif</option>
+                <option value="{{$user->gender}}"> @if($user->gender === 1)<p>Male</p>@elseif($user->gender === 2)
+                  <p>Female</p>@else<p>Other</p>@endif</option>
+                
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                <option value="3">Other</option>
               
-              <option value="1">Male</option>
-              <option value="2">Female</option>
-              <option value="3">Other</option>
-            
             </select>
 
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Age</label>
             <select  id="base-input" name="age" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option value="{{$user->age}}">
+               <option value="{{$user->age}}">
                     @if($user->age === 1)<p>10歳未満</p>@endif
                     @if($user->age === 2)<p>10代</p>@endif
                     @if($user->age === 3)<p>20代</p>@endif
@@ -79,27 +79,27 @@
                     @if($user->age === 7)<p>60代</p>@endif
                     @if($user->age === 8)<p>70代</p>@endif
                     @if($user->age === 9)<p>80代以上</p>@endif
-            </option>
-            <option value="1">10歳未満</option>
-            <option value="2">10代</option>
-            <option value="3">20代</option>
-            <option value="4">30代</option> 
-            <option value="5">40代</option>
-            <option value="6">50代</option>
-            <option value="7">60代</option>
-            <option value="8">70代</option>
-            <option value="9">80代以上</option>
-
-          </select>
+                </option>
+                <option value="1">10歳未満</option>
+                <option value="2">10代</option>
+                <option value="3">20代</option>
+                <option value="4">30代</option> 
+                <option value="5">40代</option>
+                <option value="6">50代</option>
+                <option value="7">60代</option>
+                <option value="8">70代</option>
+                <option value="9">80代以上</option>
+            </select>
 
             <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">industry</label>
             <input type="text" id="base-input" name="industry" value="{{$user->industry}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           </div>
-          
 
           
-
-          <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">update</button>
+          <div class="row justify-content-center">
+            <button type="submit" class=" flex justify-content-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              update</button>
+          </div>
           
       </div>
     </form>
