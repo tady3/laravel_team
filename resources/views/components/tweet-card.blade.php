@@ -52,7 +52,7 @@
     <div class="">
     <img id="showImage" class="max-w-xs w-60 items-center border" src="{{'/storage/'. $tweet['img']}}" alt=""> 
 
-    {{-- @php 
+    @php 
         //OGPを取得したいURL
         if(isset($tweet->url))
         {
@@ -74,13 +74,13 @@
             $title = $node_title->item(0)->nodeValue;
             $image = $node_image->item(0)->nodeValue;
 
-            // echo '<a href="'.$url.'">';
-            // echo '<img class="max-w-xs w-60 items-center border" src="'.$image.'">';
-            // echo $title;
-            // echo '</a>';
+            echo '<a href="'.$url.'">';
+            echo '<img class="max-w-xs w-60 items-center border" src="'.$image.'">';
+            echo $title;
+            echo '</a>';
         }
     };
-    @endphp --}}
+    @endphp
     </div>
 
 
