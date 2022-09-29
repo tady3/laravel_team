@@ -63,9 +63,6 @@ class DatabaseSeeder extends Seeder
                 \App\Models\Tag::create([
                     'name' => '会話'
                 ]);
-                \App\Models\Tag::create([
-                    'name' => '他'
-                ]);
         // Tag追記終了
 
 
