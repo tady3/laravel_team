@@ -26,15 +26,31 @@ class TweetController extends Controller
 
 
     public function showTweetsIndex($id)
-    {
-        $tweets = Tweet::with(['user','tags'])
-        
-        //多田追記
+    {   
+        $user_id = auth()->user()->id;
+        $usr_id=stripslashes($user_id); 
+        $tweets = Tweet::with(['user','tags']);
+        $query = Tweet::query()->where([['published',1]]);//Tweetモデルのクエリビルダを開始
+
+
+        if($id==$user_id)
+        {
+        $tweets = $tweets
         ->where('user_id',$id)
-        //多田追記了
 
         ->orderBy('created_at','desc')
         ->get(); //Eager Loadの描き方
+        }
+        else
+        {
+            $tweets=$query->where('user_id',$id)
+    
+            // ->orderBy('created_at','desc')
+            ->get(); //Eager Loadの描き方
+    
+        }
+
+
 
         $tags = Tag::all();
         $card_likes =CardLike::all(); //card_likesから全て取ってくる
@@ -49,6 +65,7 @@ class TweetController extends Controller
 
         // ]
     );
+    
     }
 
     /**
