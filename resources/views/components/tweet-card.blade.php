@@ -55,7 +55,7 @@
 
 
 
-    <p class="font-weight-bold" style="font-size: 0.8rem; color:blue">★ {{ $tweet->rate}}</p> 
+    <p class="font-weight-bold" style="font-size: 0.8rem; color:blue">ジブン度★ {{ $tweet->rate}}</p> 
     {{-- card_like部分 --}}
     <div>
         @if($tweet->is_liked_by_auth_user())

@@ -117,7 +117,7 @@
 
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
     <select id="" name="rate" class="">
-        <option disabled selected style="display:none;">ジブンらしさ★: 1〜5</option>
+        <option disabled selected style="display:none;">ジブン度 ★: 1〜5</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option> 
