@@ -150,7 +150,7 @@
                         <select id="select" name="rate" class="">
                         
                             <option value="{{ $tweet->rate}}">  
-                            @if(empty($tweet->rate))<p>★ジブンらしさ: 1〜5</p>
+                            @if(empty($tweet->rate))<p>★ジブン度: 1〜5</p>
                             @else<p>ジブンらしさ：{{ $tweet->rate }}</p>@endif</option>
                            
 
