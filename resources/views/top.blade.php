@@ -14,16 +14,25 @@
     <!-- Material Design for Bootstrap 読み込み 終了 -->
 </head>
 <body class="vh-100">
-    <div class="row">
-        <div class="d-none d-lg-block col-lg-5">
-            <img src="{{ asset('img/top.jpg') }}" alt="" class=" vh-100" style="object-fit: cover; height:auto; width:auto;">
-        </div>
-        <div class="col-12 col-lg-5">
-            <div class="vh-100 d-flex flex-column justify-content-center px-4 px-lg-0">
-                <img src="/img/logo.jpg" alt=""  style="width: 150px; opacity:0.75; border-radius:100px;" class="mt-5 mb-4">
-                {{-- <p class="fs-3">fly your life with your love</p> --}}
 
-                <h1 class="font-weight-bold mb-3" style="font-size: 16px;">~ ジブンのスキで空を飛ぶ ~</h1>
+    <div style="background-image: url({{ asset('img/top.jpg') }});
+    background-position: center;
+    background-size: cover;
+    text-align: center; 
+    height:auto; width:auto;
+    position: relative;">
+
+
+    <div class="row">
+        <div class=" d-block col-lg-5 vh-80" >
+            
+            {{-- <img src="{{ asset('img/top.jpg') }}" alt="" class=" vh-100" style="object-fit: cover; height:auto; width:auto;"> --}}
+        </div>
+        <div class="col-12 col-lg-5 vh-100">
+            <div class="vh-100 d-flex flex-column  px-4 px-lg-0 mx-auto" style="position: absolute; text-aling:center">
+                <img src="/img/logo.jpg" alt=""  style="width: 150px; opacity:0.75; border-radius:100px; " class="mt-5 mb-5 d-block mx-auto ">
+
+                <h1 class="font-weight-bold mb-1 mx-auto" style="font-size: 16px;">~ ジブンのスキで空を飛ぶ ~</h1>
 
                 <div>
                     @if (Route::has('login'))
@@ -31,7 +40,7 @@
                             @auth
                                 <div class="mb-6">
                                     <a href="{{ route('tweets.index') }}"  class="btn btn-primary btn-rounded font-weight-bold btn-lg" style="width: 200px;">
-                                        つぶやきを見る
+                                        「スキ」コレクション
                                     </a>
                                 </div>
                             @else
@@ -57,5 +66,7 @@
             </div>
         </div>
     </div>
+</div>
+
 </body>
 </html>
