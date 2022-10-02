@@ -25,7 +25,8 @@ return new class extends Migration
             $table->integer('gender')->nullable();
             $table->integer('age')->nullable();
             $table->integer('industry')->nullable();
-            $table->string('img')->nullable();
+            $table->text('img')->nullable();//heroku用の変更
+            // $table->string('img')->nullable();
             $table->timestamps();
         });
     }

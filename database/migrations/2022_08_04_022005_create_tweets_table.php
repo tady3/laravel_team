@@ -34,7 +34,8 @@ return new class extends Migration
             $table->string('story')->nullable(); // 追記部分 VARCHAR(255) が作成される
 
             $table->integer('rate')->nullable(); 
-            $table->string('img')->nullable();
+            // $table->string('img')->nullable();
+            $table->text('img')->nullable();//heroku用に変更
             $table->boolean('published')->nullable(); 
             $table->foreignId('card_type_id')->constrained(); 
             // <!-- 多田追記終了 -->

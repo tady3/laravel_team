@@ -19,13 +19,14 @@
 
 <div class="h-full">
  
-    <div class="border-b-2 block md:flex">
   
       <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
   
         <div class="w-full p-8 mx-2 flex justify-center" style="position: relative;">
           
-            <img id="showImage" class="max-w-xs w-32 items-center border" src="{{ '/storage/' . $user['img']}}" alt="">
+            {{-- <img id="showImage" class="max-w-xs w-32 items-center border" src="{{ '/storage/' . $user['img']}}" alt=""> --}}
+            <img id="showImage" class="max-w-xs w-32 items-center border" src="data:image/png;base64,{{  }}image " alt="">
+
             @if($user->id === auth()->user()->id)
               <a href="/profile-upload">
                 <div style="position: absolute; top: 75%;left: 60%; background-color: white">

@@ -43,16 +43,19 @@ class UserController extends Controller
     {
         // ディレクトリ名
 
-          // アップロードされたファイル名を取得
-          $file_name = $request->img->getClientOriginalName();
+        //   // アップロードされたファイル名を取得
+        //   $file_name = $request->img->getClientOriginalName();
 
-          // 取得したファイル名で保存
-          $img =$request->img->storeAs('',$file_name,'public');
+        //   // 取得したファイル名で保存
+        //   $img =$request->img->storeAs('',$file_name,'public');
 
-          // ファイル情報をDBに保存
-          $user=User::where('id',auth()->user()->id);
-          $user->update(['img'=> $img]);
+        //   // ファイル情報をDBに保存
+        //   $user=User::where('id',auth()->user()->id);
+        //   $user->update(['img'=> $img]);
 
+        $img = base64_encode(file_get_contents($request->img->getRealPath()));
+        User::insert([
+            "image" => $img]);
 
         return redirect('/profile');
     }
