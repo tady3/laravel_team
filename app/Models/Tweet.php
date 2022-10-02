@@ -73,7 +73,11 @@ class Tweet extends Model
       CardLike::where('tweet_id', '=', $tweet_id)->delete();
     }
   
-
+    //Tweetとcommentの制約を切るメソッド
+    public function deleteComment($tweet_id)
+    {
+      Comment::where('tweet_id', '=', $tweet_id)->delete();
+    }
 
 }
 
