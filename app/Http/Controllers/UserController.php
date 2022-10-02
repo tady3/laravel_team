@@ -43,14 +43,14 @@ class UserController extends Controller
     {
         // ディレクトリ名
 
-        //   // アップロードされたファイル名を取得
-        //   $file_name = $request->img->getClientOriginalName();
+          // アップロードされたファイル名を取得
+          $file_name = $request->img->getClientOriginalName();
 
-        //   // 取得したファイル名で保存
-        //   $img =$request->img->storeAs('',$file_name,'public');
+          // 取得したファイル名で保存
+          $img =$request->img->storeAs('',$file_name,'public');
 
-            $img = $request->img->getRealPath();
-            $img = base64_encode(file_get_contents($img));
+            // $img = $request->img->getRealPath();
+            // $img = base64_encode(file_get_contents($img));
 
 
           // ファイル情報をDBに保存
