@@ -49,7 +49,9 @@
         
         <div class="w-full p-8 mx-2 flex justify-center">
     
-          <img id="showImage" class="max-w-xs w-32 items-center border" src="{{'/storage/'. $user['img']}}" alt=""> 
+          {{-- <img id="showImage" class="max-w-xs w-32 items-center border" src="{{'/storage/'. $user['img']}}" alt="">  --}}
+          <img id="showImage" class="max-w-xs w-32 items-center border" src="data:image/png;base64,{{ $user->img }} " alt="">
+
         
         </div>
         

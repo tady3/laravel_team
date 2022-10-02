@@ -24,8 +24,7 @@
   
         <div class="w-full p-8 mx-2 flex justify-center" style="position: relative;">
           
-            {{-- <img id="showImage" class="max-w-xs w-32 items-center border" src="{{ '/storage/' . $user['img']}}" alt=""> --}}
-            <img id="showImage" class="max-w-xs w-32 items-center border" src="data:image/png;base64,{{  }}image " alt="">
+            <img id="showImage" class="max-w-xs w-32 items-center border" src="{{ '/storage/' . $user['img']}}" alt="">
 
             @if($user->id === auth()->user()->id)
               <a href="/profile-upload">

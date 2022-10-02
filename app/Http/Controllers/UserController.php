@@ -55,7 +55,7 @@ class UserController extends Controller
 
         $img = base64_encode(file_get_contents($request->img->getRealPath()));
         User::insert([
-            "image" => $img]);
+            "img" => $img]);
 
         return redirect('/profile');
     }
