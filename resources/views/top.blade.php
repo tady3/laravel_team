@@ -44,21 +44,27 @@
                                     </a>
                                 </div>
                             @else
-                                @if (Route::has('register'))
-                                    <div class="mb-6">
-                                        <a href="{{ route('register') }}"  class="btn btn-primary btn-rounded font-weight-bold btn-lg shadow-1" style="width: 200px;">
-                                            メールアドレスで登録
-                                        </a>
-                                    </div>
-                                @endif
-                                <div>
-                                    <p class="font-weight-bold mb-2">アカウントをお持ちの場合</p>
-                                    <div class="mb-2">
-                                        <a href="{{ route('login') }}"  class="btn btn-outline-primary btn-rounded font-weight-bold btn-lg" style="width: 200px;">
-                                            ログイン
-                                        </a>
-                                    </div>
+                            <div>
+                                <div class="mb-2">
+                                    <a href="{{ route('login') }}"  class="btn btn-primary btn-rounded font-weight-bold btn-lg shadow-1" style="width: 200px;">
+                                        ログイン
+                                    </a>
                                 </div>
+                                <div class="mb-2">
+                                    <a href="/ridirect-to-google"  class="btn btn-primary btn-rounded font-weight-bold btn-lg shadow-1" style="width: 200px;" role="button">
+                                        Google ログイン
+                                    </a>
+                                </div>
+                            </div>
+                            @if (Route::has('register'))
+                            <p class="font-weight-bold mb-2 mt-4">アカウントをお持ちでない場合</p>
+                                <div class="mb-6">
+                                    {{-- <a href="{{ route('register') }}"  class="btn btn-primary btn-rounded font-weight-bold btn-lg shadow-1" style="width: 200px;"> --}}
+                                    <a href="{{ route('register') }}"  class="btn btn-outline-primary btn-rounded font-weight-bold btn-lg" style="width: 200px;">
+                                        メールアドレスで登録
+                                    </a>
+                                </div>
+                            @endif
                             @endauth
                         </div>
                     @endif
