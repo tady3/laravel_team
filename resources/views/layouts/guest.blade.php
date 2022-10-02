@@ -12,6 +12,30 @@
 
         <!-- Scripts -->
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+
+                {{-- TailWindのCSS読み込み --}}
+                <link
+                href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+                rel="stylesheet"/>
+        
+                <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+              
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+                <script src="https://cdn.tailwindcss.com"></script>
+                <script>
+                    tailwind.config = {
+                        theme: {
+                        extend: {
+                            fontFamily: {
+                            sans: ['Inter', 'sans-serif'],
+                            },
+                        }
+                        }
+                    }
+                    </script>      
+              {{-- Tailwind 了 --}}
+        
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased">
