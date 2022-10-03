@@ -35,7 +35,7 @@
                                         {{ $user->nickname }}
                                     </td>
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        @if($user->gender === 1)<span>Male</span>@elseif($user->gender === 2)<span>Female</span>@else<span>Other</span>@endif
+                                        @if($user->gender === 1)<span>男性</span>@elseif($user->gender === 2)<span>女性</span>@else<span>設定なし</span>@endif
                                         ：@if($user->age === 1)<span>10歳未満</span>@endif
                                         @if($user->age === 2)<span>10代</span>@endif
                                         @if($user->age === 3)<span>20代</span>@endif

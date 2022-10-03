@@ -7,15 +7,21 @@
                 <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                     <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
-                <input type="search" id="default-search" class="py-3 block p-8 pl-10 w-full text-sm text-gray-900 bg--50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="search_idで友達候補を検索" name="keyword" value="@if (isset($keyword)) {{ $keyword }} @endif">
-                <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style="background-color:#252f5a">Search</button>
+                <input type="search" id="default-search" class="py-3 block p-8 pl-10 w-full text-sm text-gray-900 bg--50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="サーチIDで友達候補を検索" name="keyword" value="@if (isset($keyword)) {{ $keyword }} @endif">
+                <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style="background-color:#252f5a">検索</button>
             </div>
         </form>
         </div>
 
 
-        <p class="font-weight-bold" style="font-size: 1.2rem;">　</p>
-        <h1 class="font-weight-bold" style="font-size: 1.4rem;">友達</h1>
+        <div class="mt-6  flex ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-900">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+            </svg>
+       
+            <h1 class="text-blue-900" style="font-size: 1.2rem;">　友達</h1>
+        </div>
+
         <div class="flex flex-col">
 
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-6">
@@ -100,8 +106,12 @@
         </div>
 
          {{-- こちらが友達に誘っている人 --}}
-        <p class="font-weight-bold" style="font-size: 1.2rem;">　</p>
-        <div><h1 class="font-weight-bold" style="font-size: 1.4rem;">{{ auth()->user()->nickname}}が誘っている人</h1>
+         <div class="mt-6  flex ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-900">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
+              </svg>              
+        <h1 class="text-blue-900" style="font-size: 1.2rem;">　{{ auth()->user()->nickname}}が誘っている人</h1>
+        </div>
         @foreach ($friendsgo as $friend)
         <div class="flex flex-col">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-6">
@@ -148,8 +158,12 @@
         </div>
         @endforeach
 
-    <p class="font-weight-bold" style="font-size: 1.2rem;">　</p>
-    <div><h1 class="font-weight-bold" style="font-size: 1.4rem;">{{ auth()->user()->nickname}}を誘っている人</h1>
+        <div class="mt-6  flex ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-900">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
+              </svg>                 
+            <h1 class="text-blue-900" style="font-size: 1.2rem;">　{{ auth()->user()->nickname}}を誘っている人</h1>
+        </div>
         @foreach ($friendscome as $friend)
 
         <div class="flex flex-col">

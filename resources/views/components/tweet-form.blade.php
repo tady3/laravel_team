@@ -37,8 +37,8 @@
 
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
     
-    <div class="form-outline">
-        <textarea class="form-control" id="text-area" rows="1" name="" placeholder="コトバの出所 ? : ドラゴンボール">{{old('source')}}</textarea>
+    <div class="form-outline ">
+        <textarea class="form-control " id="text-area" rows="1" name="" placeholder="コトバの出所 ? : ドラゴンボール">{{old('source')}}</textarea>
     </div>       
         <!-- 多田追記終了 -->
 </div>
@@ -60,8 +60,9 @@
 {{-- タグ付け用チェックボックス ここまで --}}
 
 <!-- 多田追記 -->
-    <select id="" name="when" class="">
-        <option disabled selected style="display:none;">スキになった時期</option>>
+
+    <select id="" name="when" class="border border-gray-900 text-gray-500 text-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option disabled selected style="">スキになった時期</option>>
         <option value="10歳未満">10歳未満</option>
         <option value="10代">10代</option>
         <option value="20代">20代</option>
@@ -113,7 +114,7 @@
 
     <div class="row justify-content-center">
         <button type="submit" class=" flex justify-content-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          Save</button>
+          保存</button>
       </div>
 
 </form>

@@ -167,7 +167,7 @@
             <button class="accordion-button collapsed font-weight-bold"
               type="button" data-mdb-toggle="collapse" data-mdb-target="#flush-collapseOne-{{ $tweet->id }}"
               aria-expanded="false"aria-controls="flush-collapseOne-{{ $tweet->id }}" style="font-size: 1.2rem;">
-              show Comments ({{ $tweet->comments->count() }})
+              コメントを表示 ({{ $tweet->comments->count() }})
             </button>
           </h2>
           
