@@ -28,6 +28,7 @@ class GoogleLoginController extends Controller
         // return redirect('http://localhost/tweets-index');
 
 
+        // $googleUser = Socialite::driver('google')->stateless()->user();
         $googleUser = Socialite::driver('google')->user();
  
 
