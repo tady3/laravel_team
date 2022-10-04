@@ -85,7 +85,7 @@
 
 
 <!-- 多田追記 -->   
-    <select id="" name="when" class="border border-gray-900 text-gray-500 text-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    <select id="" name="when" class="border border-gray-900 text-gray-500 text-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
         <option disabled selected style="">スキになった時期</option>
         <option value="10歳未満">10歳未満</option>
         <option value="10代">10代</option>
@@ -99,7 +99,7 @@
     </select>
 
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
-    <select id="" name="withwho" class="border border-gray-900 text-gray-500 text-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    <select id="" name="withwho" class="border border-gray-900 text-gray-500 text-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
         <option disabled selected style="display:none;">誰と</option>
         <option value="1">一人で</option>
         <option value="2">友人・知人と</option>
