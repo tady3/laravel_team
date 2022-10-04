@@ -61,7 +61,7 @@
 
 <!-- 多田追記 -->
 
-    <select id="" name="when" class="border border-gray-900 text-gray-500 text-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700">
+    <select id="" name="when" class="border border-gray-900 text-gray-500 text-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
         <option disabled selected style="">スキになった時期</option>>
         <option value="10歳未満">10歳未満</option>
         <option value="10代">10代</option>
