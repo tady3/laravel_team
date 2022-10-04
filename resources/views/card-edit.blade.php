@@ -5,20 +5,21 @@
                 <form action="/tweets/{{$tweet->id}}" method="POST" class="card card-body shadow-2 mb-1" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+
                     <div class="form-outline mb-2">
                         @if($tweet->card_type_id==1)
                             <textarea class="form-control" id="text-area" rows="1" name="message" placeholder=" ">{{ $tweet->message }}</textarea>
                             <label class="form-label" for="text-area">コトバを入力</label>
                         @else
                             <textarea class="form-control" id="text-area" rows="1" name="message" placeholder=" ">{{ $tweet->message }}</textarea>
-                            <label class="form-label" for="text-area">Foods or Drinks</label>
-                        @endif
-                            
+                            <label class="form-label" for="text-area">食事 or 飲み物</label>
+                        @endif        
                     </div>
                     
-                    <!-- 多田追記 -->
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
                         
+
+                    <div class="form-outline">
                         @if($tweet->card_type_id==1)
                             <div class="form-outline mb-2">
                                 <textarea class="form-control" id="text-area" rows="1" name="bywho" placeholder="">{{ $tweet->bywho }}</textarea>
@@ -27,28 +28,27 @@
                         @else
                         @endif
 
-    
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
+                        
                         <div class="form-outline">
                             <textarea class="form-control" id="text-area" rows="1" name="source" placeholder="">{{ $tweet->source }}</textarea>
-                        @if($tweet->card_type_id==1)    
-                            <label class="form-label" for="text-area">コトバの出所</label>
-                        @else
-                            <label class="form-label" for="text-area">店/場所の名前</label>
-                            
-                        @endif
+                             @if($tweet->card_type_id==1)    
+                                <label class="form-label" for="text-area">コトバの出所</label>
+                            @else
+                                <label class="form-label" for="text-area">店/場所の名前</label>
+                            @endif
+                        </div>
 
-                        @if($tweet->card_type_id==2)
-                        
+                        @if($tweet->card_type_id==1)
+                        @else 
+                        <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>    
                         <div class="form-outline mb-2">
-                            
                             <textarea class="form-control" id="text-area" rows="1" name="location" placeholder="">{{ $tweet->location }}</textarea>
                             <label class="form-label" for="text-area">ロケーション？</label>
                         </div>
-                    @else
-                    @endif
+                        @endif
     
-                        </div>       
+                    </div>       
                     <!-- 多田追記終了 -->
 
 
@@ -92,11 +92,9 @@
 
 
                     <!-- 多田追記 -->
-                        <select id="" name="when" class="">
+                        <select id="" name="when" class="border border-gray-900 text-gray-500 text-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option value="{{ $tweet->when}}">
-                                
                                @if(empty($tweet->when))<p>スキになった時期</p>@else<p>{{ $tweet->when }}</p>@endif</option>
-
                             <option value="10歳未満">10歳未満</option>
                             <option value="10代">10代</option>
                             <option value="20代">20代</option>
@@ -110,8 +108,9 @@
 
                         @if($tweet->card_type_id==2)
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
-                        <select id="" name="withwho" class="">
-                            @if(empty($tweet->withwho))<p>誰と</p>@else<p>{{ $tweet->wihwho }}</p>@endif</option>
+                        <label class="form-label" for="">誰と</label>
+                        <select id="" name="withwho" class="border border-gray-900 text-gray-500 text-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <option> @if(empty($tweet->withwho))<p>誰と</p>@else<p>{{ $tweet->withwho }}</p>@endif</option>
                             <option value="一人で">一人で</option>
                             <option value="友人・知人と">友人・知人と</option>
                             <option value="家族と">家族と</option> 
@@ -147,7 +146,7 @@
                         </div>
 
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
-                        <select id="select" name="rate" class="">
+                        <select id="select" name="rate" class="border border-gray-900 text-gray-500 text-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         
                             <option value="{{ $tweet->rate}}">  
                             @if(empty($tweet->rate))<p>★ジブン度: 1〜5</p>
@@ -184,19 +183,19 @@
 
 
 
-                    <div class="d-flex gap-3">
-                        <a href="/tweets-index" class="btn btn-dark btn-block shadow-0 rounded-lg text-sm w-full  px-5 py-2.5">キャンセル</a>
-                        
-                            <button type="submit" class=" flex justify-content-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                              更新</button>
-                          </div>
+                <div class="d-flex gap-3">
+                    <a href="/tweets-index" class="btn btn-dark btn-block shadow-0 rounded-lg text-sm w-full  px-5 py-2.5">キャンセル</a>
                     
-                        
-                        {{-- <button type="submit" class="btn btn-primary btn-block shadow-0 mt-0">更新</button> --}}
+                        <button type="submit" class=" flex justify-content-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            更新</button>
+                        </div>
+                
+                    
+                    {{-- <button type="submit" class="btn btn-primary btn-block shadow-0 mt-0">更新</button> --}}
 
                     </div>
-                </form>
+                 </form>
             </div>
         </div>
-    <div class="container mt-4">
+     </div>
 </x-app-layout>

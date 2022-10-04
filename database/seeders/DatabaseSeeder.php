@@ -149,7 +149,7 @@ class DatabaseSeeder extends Seeder
                 \App\Models\Tweet::create([
                     'message' => 'だんだんめん。',
                     'user_id' => 1,
-                    'withwho' => 1,
+                    'withwho' => '一人で',
                     'source' => 'はしご',
                     'location' => '新富町',
                     'url' => 'https://tabelog.com/imgview/original?id=r659603336304',

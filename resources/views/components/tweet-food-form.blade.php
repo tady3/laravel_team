@@ -101,10 +101,10 @@
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
     <select id="" name="withwho" class="border border-gray-900 text-gray-500 text-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
         <option disabled selected style="display:none;">誰と</option>
-        <option value="1">一人で</option>
-        <option value="2">友人・知人と</option>
-        <option value="3">家族と</option> 
-        <option value="4">会合・集まり</option>
+        <option value="一人で">一人で</option>
+        <option value="友人・知人と">友人・知人と</option>
+        <option value="家族と">家族と</option> 
+        <option value="会合・集まり">会合・集まり</option>
     </select>
 
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>

@@ -22,7 +22,9 @@
 
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>    
     <div class="form-outline">
-        <textarea class="form-control" id="text-area" rows="1" name="message" placeholder="コトバを書く: オラ悟空">{{old('message')}}</textarea>
+
+        <textarea class="form-control" id="text-area" rows="1" name="message" placeholder="">{{old('message')}}</textarea>
+        <label class="form-label" for="text-area">コトバを書く: オラ悟空</label>
             @error('message')
         <div class="form-helper text-danger">{{$message}}</div>
             @enderror
@@ -32,13 +34,15 @@
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
 
     <div class="form-outline">
-        <textarea class="form-control" id="text-area" rows="1" name="bywho" placeholder="誰のコトバ ? : 孫悟空">{{old('bywho')}}</textarea>
+        <textarea class="form-control" id="text-area" rows="1" name="bywho" placeholder="">{{old('bywho')}}</textarea>
+        <label class="form-label" for="text-area">誰のコトバ ? : 孫悟空</label>
     </div>
 
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
     
     <div class="form-outline ">
         <textarea class="form-control " id="text-area" rows="1" name="" placeholder="コトバの出所 ? : ドラゴンボール">{{old('source')}}</textarea>
+        <label class="form-label" for="text-area">コトバの出所 ? : ドラゴンボール</label>
     </div>       
         <!-- 多田追記終了 -->
 </div>
