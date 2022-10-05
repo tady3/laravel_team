@@ -251,6 +251,7 @@ class TweetController extends Controller
     {   
         $id=$tweet->id;
         $tweet->deleteCardLike($id);
+        $tweet->deleteComment($id);
         $this->authorize('update', $tweet); 
         $tweet->tags()->detach(); //tweetを削除する際にtagとの関係性を一旦解除してから削除している
         $tweet->delete();
@@ -291,10 +292,10 @@ class TweetController extends Controller
 
                     $query = $query->where('message', 'LIKE', '%'.$w .'%')
                     ->orwhere('bywho', 'LIKE', '%'.$w .'%')
-                    ->where('location', 'LIKE', '%'.$w .'%')
-                    ->where('withwho', 'LIKE', '%'.$w .'%')
-                    ->where('source', 'LIKE', '%'.$w .'%')
-                    ->where('when', 'LIKE', '%'.$w .'%')
+                    ->orwhere('location', 'LIKE', '%'.$w .'%')
+                    ->orwhere('withwho', 'LIKE', '%'.$w .'%')
+                    ->orwhere('source', 'LIKE', '%'.$w .'%')
+                    ->orwhere('when', 'LIKE', '%'.$w .'%')
                     ->orwhere('story', 'LIKE', '%'.$w .'%')
                     ->orWhereHas('tags', function ($tag_query) use ($w )
                         {

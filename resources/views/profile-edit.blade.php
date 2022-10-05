@@ -19,13 +19,13 @@
 
 <div class="h-full">
  
-    <div class="border-b-2 block md:flex">
   
       <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
   
         <div class="w-full p-8 mx-2 flex justify-center" style="position: relative;">
           
             <img id="showImage" class="max-w-xs w-32 items-center border" src="{{ '/storage/' . $user['img']}}" alt="">
+
             @if($user->id === auth()->user()->id)
               <a href="/profile-upload">
                 <div style="position: absolute; top: 75%;left: 60%; background-color: white">
@@ -46,30 +46,30 @@
 
 
           <div class="mb-6">
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Account name</label>
+            <label for="base-input" class=" block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">名前</label>
             <input type="text" id="base-input" name="name" value="{{$user->name}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">User name</label>
+            <label for="base-input" class="mt-2 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">ユーザー名</label>
             <input type="text" id="base-input" name="nickname" value="{{$user->nickname}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">SearchID</label>
-            <input type="text" id="base-input" name="search_id" value="{{$user->search_id}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <label for="base-input" class="mt-2 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">サーチID</label>
+            <input type="text" id="base-input" name="search_id" value="{{$user->search_id}}" placeholder="友達検索用のIDを入力" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
+            <label for="base-input" class="mt-2 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
             <input type="text" id="base-input" name="email" value="{{$user->email}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Gender</label>
+            <label for="base-input" class="mt-2 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">性別</label>
             <select id="base-input" name="gender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option value="{{$user->gender}}"> @if($user->gender === 1)<p>Male</p>@elseif($user->gender === 2)
-                  <p>Female</p>@else<p>Other</p>@endif</option>
+                <option value="{{$user->gender}}"> @if($user->gender === 1)<p>男性</p>@elseif($user->gender === 2)
+                  <p>女性</p>@else<p>設定なし</p>@endif</option>
                 
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">Other</option>
+                <option value="1">男性</option>
+                <option value="2">女性</option>
+                <option value="3">設定なし</option>
               
             </select>
 
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Age</label>
+            <label for="base-input" class="mt-2 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">年齢</label>
             <select  id="base-input" name="age" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                <option value="{{$user->age}}">
                     @if($user->age === 1)<p>10歳未満</p>@endif
@@ -93,14 +93,14 @@
                 <option value="9">80代以上</option>
             </select>
 
-            <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">industry</label>
+            <label for="base-input" class="mt-2 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">業界/職業</label>
             <input type="text" id="base-input" name="industry" value="{{$user->industry}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           </div>
 
           @if($user->id === auth()->user()->id)
             <div class="row justify-content-center -mt-8">
               <button type="submit" class=" flex justify-content-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                update</button>
+                更新</button>
             </div>
           @else <p></p>
           @endif  

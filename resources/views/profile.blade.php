@@ -26,14 +26,14 @@
         <div style="float: right;">
           {{-- ↓ユーザーidがログインしているユーザーIDと一致している時だけ、Editボタンを表示する --}}
             @if($user->id === auth()->user()->id)
-          <a href="/profile/{{$user->id}}/edit" class=" -mt-2 text-md font-bold text-white bg-gray-700 rounded-full px-4 py-1 hover:bg-gray-800">Edit</a>
+          <a href="/profile/{{$user->id}}/edit" class=" -mt-2 text-md font-medium text-white bg-blue-900 rounded-full px-4 py-2 hover:bg-blue-900">編集</a>
           @else <p></p>@endif
         </div>  
 
-        <div class="center" style="text-align:center;clear: both; ">  
-            <span class="text-xl font-semibold block">{{$user->nickname}}</span>
+        <div class="mt-2 center" style="text-align:center;clear: both; ">  
+            <span class=" text-xl font-semibold block">{{$user->nickname}}</span>
 
-            @if($user->gender === 1)<span>Male</span>@elseif($user->gender === 2)<span>Female</span>@else<span>Other</span>@endif
+            @if($user->gender === 1)<span>男性</span>@elseif($user->gender === 2)<span>女性</span>@else<span>設定なし</span>@endif
             /@if($user->age === 1)<span>10歳未満</span>@endif
             @if($user->age === 2)<span>10代</span>@endif
             @if($user->age === 3)<span>20代</span>@endif
@@ -48,8 +48,17 @@
       </div>
         
         <div class="w-full p-8 mx-2 flex justify-center">
-    
-          <img id="showImage" class="max-w-xs w-32 items-center border" src="{{'/storage/'. $user['img']}}" alt=""> 
+
+
+          @if(isset($user->img))
+          <img id="showImage" class="max-w-xs w-32 items-center border" src="{{'/storage/'. $user['img']}}" alt="">
+          @else <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+          </svg>
+          @endif
+          
+          {{-- <img id="showImage" class="max-w-xs w-32 items-center border" src="data:image/png;base64,{{ $user->img }} " alt=""> --}}
+
         
         </div>
         
@@ -67,9 +76,12 @@
             
               Foods & Drinks
           </button>
+
           <button type="button" class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-              Friends & Follow
+            <a href="/friend-index" class="">友達リスト</a>
+        
+            
           </button>
           <button type="button" class="inline-flex relative items-center py-2 px-4 w-full text-sm font-medium border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

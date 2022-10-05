@@ -22,7 +22,9 @@
 
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>    
     <div class="form-outline">
-        <textarea class="form-control" id="text-area" rows="1" name="message" placeholder="コトバを書く: オラ悟空">{{old('message')}}</textarea>
+
+        <textarea class="form-control" id="text-area" rows="1" name="message" placeholder="">{{old('message')}}</textarea>
+        <label class="form-label" for="text-area">コトバを書く: オラ悟空</label>
             @error('message')
         <div class="form-helper text-danger">{{$message}}</div>
             @enderror
@@ -32,13 +34,15 @@
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
 
     <div class="form-outline">
-        <textarea class="form-control" id="text-area" rows="1" name="bywho" placeholder="誰のコトバ ? : 孫悟空">{{old('bywho')}}</textarea>
+        <textarea class="form-control" id="text-area" rows="1" name="bywho" placeholder="">{{old('bywho')}}</textarea>
+        <label class="form-label" for="text-area">誰のコトバ ? : 孫悟空</label>
     </div>
 
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
     
-    <div class="form-outline">
-        <textarea class="form-control" id="text-area" rows="1" name="" placeholder="コトバの出所 ? : ドラゴンボール">{{old('source')}}</textarea>
+    <div class="form-outline ">
+        <textarea class="form-control " id="text-area" rows="1" name="" placeholder="コトバの出所 ? : ドラゴンボール">{{old('source')}}</textarea>
+        <label class="form-label" for="text-area">コトバの出所 ? : ドラゴンボール</label>
     </div>       
         <!-- 多田追記終了 -->
 </div>
@@ -60,8 +64,9 @@
 {{-- タグ付け用チェックボックス ここまで --}}
 
 <!-- 多田追記 -->
-    <select id="" name="when" class="">
-        <option disabled selected style="display:none;">スキになった時期</option>>
+
+    <select id="" name="when" class="border border-gray-900 text-gray-500 text-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        <option disabled selected style="">スキになった時期</option>>
         <option value="10歳未満">10歳未満</option>
         <option value="10代">10代</option>
         <option value="20代">20代</option>
@@ -104,7 +109,7 @@
     <label for="default-toggle" class="inline-flex relative items-center cursor-pointer">
         <input type="checkbox" name="published" value="1" id="default-toggle" class="sr-only peer">
         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">公開</span>
+        <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-700">公開</span>
     </label>
 
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
@@ -113,7 +118,7 @@
 
     <div class="row justify-content-center">
         <button type="submit" class=" flex justify-content-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          Save</button>
+          保存</button>
       </div>
 
 </form>

@@ -19,7 +19,7 @@
 
 
 <div class="mb-2">
-    <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 1.6rem; text-align: center ">「らしさ」を彩る「スキ」なFoods & Drinks 🍽</p>
+    <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 1.6rem; text-align: center ">「らしさ」を彩る「スキ」な食事 & 飲み物 🍽</p>
     
     <div class="form-outline">
         <textarea class="form-control" id="text-area" rows="1" name="message" placeholder="料理名: カルボナーラ">{{old('message')}}</textarea>
@@ -84,9 +84,9 @@
 </div>
 
 
-<!-- 多田追記 -->
-    <select id="" name="when" class="">
-        <option disabled selected style="display:none;">スキになった時期</option>
+<!-- 多田追記 -->   
+    <select id="" name="when" class="border border-gray-900 text-gray-500 text-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        <option disabled selected style="">スキになった時期</option>
         <option value="10歳未満">10歳未満</option>
         <option value="10代">10代</option>
         <option value="20代">20代</option>
@@ -99,12 +99,12 @@
     </select>
 
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
-    <select id="" name="withwho" class="">
+    <select id="" name="withwho" class="border border-gray-900 text-gray-500 text-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
         <option disabled selected style="display:none;">誰と</option>
-        <option value="1">一人で</option>
-        <option value="2">友人・知人と</option>
-        <option value="3">家族と</option> 
-        <option value="4">会合・集まり</option>
+        <option value="一人で">一人で</option>
+        <option value="友人・知人と">友人・知人と</option>
+        <option value="家族と">家族と</option> 
+        <option value="会合・集まり">会合・集まり</option>
     </select>
 
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
