@@ -50,9 +50,10 @@
     </p>
     
     <div class="">
+        @if(isset($tweet->img)) 
     <img id="showImage" class="max-w-xs w-60 items-center border" src="{{'/storage/'. $tweet['img']}}" alt=""> 
-        
-        
+        @else
+        @endif
 
     @php 
         //OGPを取得したいURL
