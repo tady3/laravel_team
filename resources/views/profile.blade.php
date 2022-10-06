@@ -5,7 +5,6 @@
 
   <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Profile</title>
   <link
@@ -19,9 +18,9 @@
 
 <div class="h-full">
  
-    <div class="border-b-2 block md:flex ">
+    <div class="border-b-2 block ">
   
-      <div class="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md ">
+      <div class="md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md ">
 
         <div style="float: right;">
           {{-- ↓ユーザーidがログインしているユーザーIDと一致している時だけ、Editボタンを表示する --}}
