@@ -108,13 +108,13 @@
 
 
     <div class="mt-2 card-text">
-        <span class="badge badge-pill badge-warning">{{ $tweet->source }}</span>
+        <span class="badge badge-pill badge-primary text-red">{{ $tweet->source }}</span>
         
-        <span class="badge badge-pill badge-warning">
+        <span class="badge badge-pill badge-primary text-red">
         @if($tweet->card_type_id==1){{ $tweet->bywho}}@else{{ $tweet->location}}@endif
         </span>
-        @if($tweet->card_type_id==2)<span class="badge badge-pill badge-primary">{{ $tweet->withwho}}</span>@else @endif
-        <span class="badge badge-pill badge-primary text-gray300">{{ $tweet->when}}</span>
+        @if($tweet->card_type_id==2)<span class="badge badge-pill badge-primary text-red">{{ $tweet->withwho}}</span>@else @endif
+        <span class="badge badge-pill badge-primary text-red">{{ $tweet->when}}</span>
         　
         <br/>
     </div>
