@@ -141,7 +141,7 @@
                             
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
                         <div class="form-outline">
-                            <textarea class="form-control" id="text-area" rows="2" name="story" placeholder="">{{ $tweet->story}}</textarea>
+                            <textarea class="form-control" id="text-area" rows="3" name="story" placeholder="">{{ $tweet->story}}</textarea>
                             <label class="form-label" for="text-area">一言コメント</label>
                         </div>
 
@@ -184,7 +184,7 @@
 
 
                 <div class="d-flex gap-3">
-                    <a href="/tweets-index" class="btn btn-dark btn-block shadow-0 rounded-lg text-sm w-full  px-5 py-2.5">キャンセル</a>
+                    <a href="/tweets-index" class="btn btn-dark btn-block shadow-0 rounded-lg text-sm w-full  px-5 py-2.5"></a>
                     
                         <button type="submit" class=" flex justify-content-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             更新</button>

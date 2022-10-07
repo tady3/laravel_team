@@ -123,7 +123,7 @@
             
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
     <div class="form-outline">
-        <textarea class="form-control" id="text-area" rows="2" name="story" placeholder="一言コメント">{{old('story')}}</textarea>
+        <textarea class="form-control" id="text-area" rows="3" name="story" placeholder="一言コメント">{{old('story')}}</textarea>
     </div>
 
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
