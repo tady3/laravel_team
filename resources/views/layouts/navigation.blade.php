@@ -2,15 +2,18 @@
 
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 sticky-top">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-2 sm:px-2 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
+    <div class="w-full mx-auto px-2 sm:px-2 lg:px-4">
+        <div class="w-full flex justify-between h-16">
+            <div class="w-full flex">
                
                 <!-- Logo -->
 
                 <div class="flex items-center space-x-2">
-                    <img src="/img/icon.png" alt="" style="width: 40px;" class="w-10 h-10 rounded-full">
-                    <br>
+                    <x-nav-link :href="route('tweets.index')" :active="request()->routeIs('tweets.index')">                        
+                        <div>
+                            <img src="/img/icon.png" alt="" style="width: 40px;" class="w-10 h-10 rounded-full">
+                        </div>                        
+                    </x-nav-link>
                     <x-nav-link :href="route('profile.index')" :active="request()->routeIs('profile.index')">
                         <div>
                             @if(isset(Auth::user()->img))
@@ -23,8 +26,7 @@
                             <div class="font-medium dark:text-white ">
                                 <div style="text-align:center:">{{ Auth::user()->nickname}}</div>
                             </div>
-                        </div>
-                        
+                        </div>                        
                     </x-nav-link>
 
                     {{-- <a :href="{{ route('tweets.index') }}">
@@ -33,15 +35,26 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="space-x-2  sm:flex">
-                    <x-nav-link :href="route('tweets.index')" :active="request()->routeIs('tweets.index')">
+                <div class="mt-3 w-30 space-x-2 sm:ml-2">
+                    {{-- <x-nav-link :href="route('tweets.index')" :active="request()->routeIs('tweets.index')">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                    </x-nav-link>
+                    </x-nav-link> --}}
                     <x-nav-link :href="route('friend.index')" :active="request()->routeIs('friend.index')">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
                           </svg>
                     </x-nav-link>
+
+                    <x-nav-link >
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
+                    </x-nav-link>
+                    <x-nav-link >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.87c1.355 0 2.697.055 4.024.165C17.155 8.51 18 9.473 18 10.608v2.513m-3-4.87v-1.5m-6 1.5v-1.5m12 9.75l-1.5.75a3.354 3.354 0 01-3 0 3.354 3.354 0 00-3 0 3.354 3.354 0 01-3 0 3.354 3.354 0 00-3 0 3.354 3.354 0 01-3 0L3 16.5m15-3.38a48.474 48.474 0 00-6-.37c-2.032 0-4.034.125-6 .37m12 0c.39.049.777.102 1.163.16 1.07.16 1.837 1.094 1.837 2.175v5.17c0 .62-.504 1.124-1.125 1.124H4.125A1.125 1.125 0 013 20.625v-5.17c0-1.08.768-2.014 1.837-2.174A47.78 47.78 0 016 13.12M12.265 3.11a.375.375 0 11-.53 0L12 2.845l.265.265zm-3 0a.375.375 0 11-.53 0L9 2.845l.265.265zm6 0a.375.375 0 11-.53 0L15 2.845l.265.265z" />
+                          </svg>
+                                  </x-nav-link>
+
+
 
                     <x-nav-link >
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -51,25 +64,25 @@
                     </x-nav-link>
 
                     
-                    <x-nav-link >
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                    </x-nav-link>
                 
                 <!-- logoutの高さを揃えるために、nav-linkを外に出して、中をaタグに変更。 -->
                 <x-nav-link> 
-                    <form style="margin:0;" method="POST" action="{{ route('logout') }}">
-                        @csrf
-                    <a  href="route('logout')" onclick="event.preventDefault();
-                    this.closest('form').submit();">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
-                    </a>
-                    </form>
                 </x-nav-link>
                 </div>
             </div>
             
 
             <!-- Settings Dropdown -->
+            <div class="mt-3">
+                <form style="margin:0;" method="POST" action="{{ route('logout') }}">
+                    @csrf
+                <a  href="route('logout')" onclick="event.preventDefault();
+                this.closest('form').submit();">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                </a>
+                </form>
+            </div>
+
             {{-- <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
