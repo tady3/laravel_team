@@ -32,21 +32,20 @@
     </div>
     
     
-    <p class="mt-3 font-weight-bold" style="font-size: 1.4rem; color: #953037;">
-        <a href="{{ $tweet->url}}" style="text-decoration:underline;">
+    <p class="mt-3 font-weight-bold" style="">
+        <a href="{{ $tweet->url}}" style="font-size: 1.4rem; color: #953037; text-decoration:underline;">
             @if($tweet->card_type_id === 1)
             👤 "{{ $tweet->message }}"
             @else🍽 {{ $tweet->message }}
             @endif
         </a>
+
         @if($tweet->published === 1)
-            <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
-                公開</span>
+        　<span class="badge badge-pill badge-danger text-dark">公開</span>
         @else
             <span>
             </span>
         @endif
-        <br/>
     </p>
     
     <div class="">
@@ -108,24 +107,28 @@
     </div>
 
 
-    <p class="card-text">
-        #{{ $tweet->source }}
-        　#@if($tweet->card_type_id==1){{ $tweet->bywho}}@else{{ $tweet->location}}@endif
-        @if($tweet->card_type_id==2)　#{{ $tweet->withwho}}@else @endif
-        　#{{ $tweet->when}}
+    <div class="mt-2 card-text">
+        <span class="badge badge-pill badge-warning">{{ $tweet->source }}</span>
+        
+        <span class="badge badge-pill badge-warning">
+        @if($tweet->card_type_id==1){{ $tweet->bywho}}@else{{ $tweet->location}}@endif
+        </span>
+        @if($tweet->card_type_id==2)<span class="badge badge-pill badge-primary">{{ $tweet->withwho}}</span>@else @endif
+        <span class="badge badge-pill badge-primary text-gray300">{{ $tweet->when}}</span>
+        　
         <br/>
-    </p>
+    </div>
 
                 
      {{-- tags 追記 --}}
-     @if($tweet->card_type_id == 1)
+     {{-- @if($tweet->card_type_id == 1) --}}
      <div>
         @foreach($tweet->tags as $tag)
             <span class="badge badge-pill badge-primary">{{$tag->name}}</span>
         @endforeach
     </div>
     {{-- tags 追記完了 --}}
-    @else 
+    {{-- @else 
     <div class="form-outline mb-2">
         <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox"  name="category" value="内食" />
@@ -140,12 +143,12 @@
                 <input class="form-check-input" type="checkbox"  name="category" value="記念日" />
                 <label class="form-check-label" for="tag-checkbox2">記念日</label>
       </div>
-    @endif
+    @endif --}}
 
     
     <p class="font-weight-bold" style="font-size: 1.2rem;"></p>
 
-    <div class="bg-blue-100 text-black-800 text-s font-semibold mr-2 px-3.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800" >
+    <div class="mt-2 bg-blue-100 text-black-800 text-s font-semibold mr-2 px-3.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800" >
 
         {{ $tweet->story}}
         </div>

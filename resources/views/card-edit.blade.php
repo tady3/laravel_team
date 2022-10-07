@@ -54,7 +54,7 @@
 
 
                     <!-- タグづけ用 -->
-                    @if($tweet->card_type_id==1)
+                    {{-- @if($tweet->card_type_id==1) --}}
                     <div class="form-outline mb-2">
                         @foreach($tags as $tag)
                             <div class="form-check form-check-inline">
@@ -71,7 +71,7 @@
                             </div>
                         @endforeach
                     </div>
-                    @else
+                    {{-- @else
                     <div class="form-outline mb-2">
                         <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox"  name="category" value="手作り" />
@@ -87,7 +87,7 @@
                                 <label class="form-check-label" for="tag-checkbox2">記念日</label>
                         
                       </div>
-                      @endif
+                      @endif --}}
 
 
 
@@ -150,7 +150,7 @@
                         
                             <option value="{{ $tweet->rate}}">  
                             @if(empty($tweet->rate))<p>★ジブン度: 1〜5</p>
-                            @else<p>ジブンらしさ：{{ $tweet->rate }}</p>@endif</option>
+                            @else<p>ジブン度：{{ $tweet->rate }}</p>@endif</option>
                            
 
                             <option value="1">1</option>

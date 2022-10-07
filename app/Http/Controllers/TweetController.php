@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CardType;
 use App\Models\Tag;
 use App\Models\User;
 use App\Models\Tweet;
@@ -150,7 +151,7 @@ class TweetController extends Controller
      public function show()
     {
         // $tweets = Tweet::with(['user','tags'])
-        $tags = Tag::all();
+        $tags = Tag::where('id','<=',9)->get();
 
         // dd($tweets);
 
@@ -162,7 +163,7 @@ class TweetController extends Controller
     public function showFoods()
     {
         // $tweets = Tweet::with(['user','tags'])
-        $tags = Tag::all();
+        $tags = Tag::where('id','>=',10)->get();
 
         // dd($tweets);
 
@@ -182,8 +183,18 @@ class TweetController extends Controller
     public function edit(Tweet $tweet) // ここも $id から書き変わっている点注意！
     {
         $this->authorize('update', $tweet); 
-        $tags = Tag::all();
+        
+        if($tweet->card_type_id == 1 )
+        {
+            $tags = Tag::where('id','<=',9)->get();
+        }
+        else
+        {   
+            $tags = Tag::where('id','>=',10)->get();
+        }
+
         $selectedTags = $tweet->tags->pluck('id')->all();
+
         return view('card-edit', [
             'tweet' => $tweet,
             'tags' => $tags,
@@ -259,6 +270,11 @@ class TweetController extends Controller
     }
 
    
+    // $users = \App\User::where([
+    //     ['id', 2],
+    //     ['name', 'like', '鈴木%']
+    // ])->get();
+
     public function search(Request $request)
     {
         // バリデーション追記開始
@@ -272,7 +288,8 @@ class TweetController extends Controller
         // $tweets = Tweet::paginate(20); //ページネーション
         $keyword = $request->get('keyword');        
         $tweets = Tweet::with(['user', 'tags']);
-        $query = Tweet::query()->where([['published',1]]);//Tweetモデルのクエリビルダを開始
+        $query = Tweet::query();
+        // ->where([['published',1]]);//Tweetモデルのクエリビルダを開始
         $nt = 0;
 
         if (isset($keyword)) 
@@ -284,19 +301,19 @@ class TweetController extends Controller
             for ($i=0; $i<$n; $i++) {
                 $words[] = addcslashes(($array_keywords[$i]), '\\_%');    //入力した言葉をエスケープ化し、言葉を配列に入れるということを、入力した言葉の数だけ繰り返す
             }
-            
+
             $tweets=[];   //配列を宣言。複数キーワードがある場合、変数だと上書きされてしまうので、結果を一つずつ配列に入れたい。多次元配列になる。
                 foreach ($words as $w) {
                     // $search_data=Tweet::where([['published',1]])
                     // ->where(function($query){ 
-
-                    $query = $query->where('message', 'LIKE', '%'.$w .'%')
-                    ->orwhere('bywho', 'LIKE', '%'.$w .'%')
-                    ->orwhere('location', 'LIKE', '%'.$w .'%')
-                    ->orwhere('withwho', 'LIKE', '%'.$w .'%')
-                    ->orwhere('source', 'LIKE', '%'.$w .'%')
-                    ->orwhere('when', 'LIKE', '%'.$w .'%')
-                    ->orwhere('story', 'LIKE', '%'.$w .'%')
+                    
+                    $query = $query->where([['published', 1] , ['message', 'LIKE', '%'.$w .'%']])
+                    ->orwhere([['published', 1] ,['bywho', 'LIKE', '%'.$w .'%']])
+                    ->orwhere([['published', 1] ,['location', 'LIKE', '%'.$w .'%']])
+                    ->orwhere([['published', 1] ,['withwho', 'LIKE', '%'.$w .'%']])
+                    ->orwhere([['published', 1] ,['source', 'LIKE', '%'.$w .'%']])
+                    ->orwhere([['published', 1] ,['when', 'LIKE', '%'.$w .'%']])
+                    ->orwhere([['published', 1] ,['story', 'LIKE', '%'.$w .'%']])
                     ->orWhereHas('tags', function ($tag_query) use ($w )
                         {
                         $tag_query->where('name', 'like', '%' . $w  . '%');
@@ -304,8 +321,10 @@ class TweetController extends Controller
                     ->orderBy('created_at', 'desc'); // 追記          
                     };
                 // }
-                  
+
+            
             $tweets[] = $query->get(); //検索結果が配列になったものをとってきている 
+    
 
             $nt=count($tweets[0]);   //検索結果の配列の数を数える。[0]を入れることで階層を一つ下げている。
     

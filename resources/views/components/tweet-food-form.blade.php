@@ -52,7 +52,7 @@
 
    {{-- タグ付け用チェックボックス ここから --}}
    
-{{-- <div class="mb-2" >
+<div class="mb-2" >
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;"> </p>
     
     <div class="form-outline mb-2">
@@ -63,11 +63,11 @@
         </div>
         @endforeach
     </div>
-</div> --}}
+</div>
 
 {{-- タグ付け用チェックボックス ここまで --}}
 
-<div class="form-outline mb-2">
+{{-- <div class="form-outline mb-2">
   <div class="form-check form-check-inline">
           <input class="form-check-input" type="checkbox"  name="category" value="内食" />
           <label class="form-check-label" for="tag-checkbox2">手作り</label>
@@ -81,7 +81,7 @@
           <input class="form-check-input" type="checkbox"  name="category" value="記念日" />
           <label class="form-check-label" for="tag-checkbox2">記念日</label>
   
-</div>
+</div> --}}
 
 
 <!-- 多田追記 -->   

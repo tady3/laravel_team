@@ -61,8 +61,36 @@ class DatabaseSeeder extends Seeder
                     'name' => 'ネット'
                 ]);
                 \App\Models\Tag::create([
+                    'name' => '講演/プレゼンテーション'
+                ]);
+                \App\Models\Tag::create([
                     'name' => '会話'
                 ]);
+                //コトバ用、タグ 1-9
+
+                \App\Models\Tag::create([
+                    'name' => '手作り'
+                ]);
+                \App\Models\Tag::create([
+                    'name' => '外食'
+                ]);
+                \App\Models\Tag::create([
+                    'name' => '旅先'
+                ]);
+                \App\Models\Tag::create([
+                    'name' => '記念日'
+                ]);
+                \App\Models\Tag::create([
+                    'name' => '会合/打上げ'
+                ]);
+                \App\Models\Tag::create([
+                    'name' => '自分へのご褒美'
+                ]);
+
+               
+
+
+
         // Tag追記終了
 
 
@@ -126,7 +154,6 @@ class DatabaseSeeder extends Seeder
                     'rate' => 4,
                     'published'=>1,
                     'card_type_id' => 1,
-                    'img' =>'スクリーンショット 2022-09-01 16.46.12.png',
 
                     
                     
@@ -158,7 +185,6 @@ class DatabaseSeeder extends Seeder
                     'rate' => 4,
                     'published'=>0,
                     'card_type_id' => 2,
-                    'img' =>'hashigo_dandan 2022-07-25 150713.png',
                     
                 ]);
 
