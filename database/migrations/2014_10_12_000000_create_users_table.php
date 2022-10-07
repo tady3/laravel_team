@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('gender')->nullable();
             $table->integer('age')->nullable();
             $table->integer('industry')->nullable();
+            $table->integer('job')->nullable();
             $table->string('img')->nullable();
             $table->timestamps();
         });

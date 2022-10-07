@@ -116,7 +116,9 @@ class UserController extends Controller
             'email' => $request->email,
             'gender' => $request->gender,
             'age' => $request->age,
-            'industry' => $request->industry
+            'industry' => $request->industry,
+            'job' => $request->job
+
     ]);
         $this->authorize('update', $user); 
         return redirect()->route('profile.index');

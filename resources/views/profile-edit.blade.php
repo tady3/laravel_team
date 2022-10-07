@@ -92,8 +92,57 @@
                 <option value="9">80代以上</option>
             </select>
 
-            <label for="base-input" class="mt-2 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">業界/職業</label>
-            <input type="text" id="base-input" name="industry" value="{{$user->industry}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <label for="base-input" class="mt-2 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">業界
+            </label>
+            <select  id="base-input" name="job" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+               <option value="{{$user->job}}">
+                    @if($user->job === 0)<p>その他/該当なし</p>@endif
+                    @if($user->job === 1)<p>学生</p>@endif
+                    @if($user->job === 2)<p>ビジネスオペレーション</p>@endif
+                    @if($user->job === 3)<p>ビジネスサービス</p>@endif
+                    @if($user->job === 4)<p>セールス</p>@endif
+                    @if($user->job === 5)<p>デザイン・クリエイター</p>@endif
+                    @if($user->job === 6)<p>マーケティング</p>@endif
+                    @if($user->job === 7)<p>エンジニア・技術職</p>@endif
+                    @if($user->job === 8)<p>リーガル</p>@endif
+                    @if($user->job === 9)<p>会計＆財務</p>@endif
+                    @if($user->job === 10)<p>M&A_投資</p>@endif
+                    @if($user->job === 11)<p>経営コンサル</p>@endif
+                    @if($user->job === 12)<p>専門アドバイス</p>@endif
+                    @if($user->job === 13)<p>事業開発</p>@endif
+                    @if($user->job === 14)<p>経営企画</p>@endif
+                    @if($user->job === 15)<p>事業マネジメント</p>@endif
+                    @if($user->job === 16)<p>経営</p>@endif
+                    @if($user->job === 17)<p>教師・コーチ</p>@endif
+                    @if($user->job === 18)<p>研究職・公共サービス</p>@endif
+                    @if($user->job === 19)<p>アスリート・アーティスト</p>@endif
+                    @if($user->job === 20)<p>タレント・代議士</p>@endif
+
+
+                </option>
+                <option value="0">その他/該当なし</option> 
+                <option value="1">学生</option>
+                <option value="2">ビジネスオペレーション</option>
+                <option value="3">ビジネスサービス</option>
+                <option value="4">セールス</option>
+                <option value="5">デザイン・クリエイター</option>
+                <option value="6">マーケティング</option>
+                <option value="7">エンジニア・技術職</option>
+                <option value="8">リーガル</option>
+                <option value="9">会計＆財務</option>
+                <option value="10">M&A_投資</option>
+                <option value="11">経営コンサル</option>
+                <option value="12">専門アドバイス</option>
+                <option value="13">事業開発</option>
+                <option value="14">経営企画</option>
+                <option value="15">事業マネジメント</option>
+                <option value="16">経営</option>
+                <option value="17">教師・コーチ</option>
+                <option value="18">研究職・公共サービス</option>
+                <option value="19">アスリート・アーティスト</option>
+                <option value="20">タレント・代議士</option>
+            </select>
+                 
           </div>
 
           @if($user->id === auth()->user()->id)
