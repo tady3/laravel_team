@@ -20,13 +20,15 @@
 
             @can('update', $tweet)
             <form action="/tweets/{{$tweet->id}}" method="POST">
-                @csrf
+                {{ csrf_field() }}
                 @method('DELETE')
-                <button type="submit" class="btn btn-floating shadow-0">
+                <button type="submit" name="delete" class="btn btn-floating shadow-0" onClick="delete_alert(event); return false;">
                     <i class="fas fa-trash fa-lg"></i>
                 </button>
             </form>
             @endcan
+
+
 
         </div>
     </div>
@@ -87,7 +89,6 @@
 
 
 
-
     <p class="mt-1 font-weight-bold" style="font-size: 0.8rem; color:blue">ジブン度★ {{ $tweet->rate}}</p> 
     {{-- card_like部分 --}}
     <div class="mt-1">
@@ -121,29 +122,12 @@
 
                 
      {{-- tags 追記 --}}
-     {{-- @if($tweet->card_type_id == 1) --}}
      <div>
         @foreach($tweet->tags as $tag)
             <span class="badge badge-pill badge-primary">{{$tag->name}}</span>
         @endforeach
     </div>
     {{-- tags 追記完了 --}}
-    {{-- @else 
-    <div class="form-outline mb-2">
-        <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox"  name="category" value="内食" />
-                <label class="form-check-label" for="tag-checkbox2">手作り</label>
-        </div>
-                <input class="form-check-input" type="checkbox"  name="category" value="外食" />          
-                <label class="form-check-label" for="tag-checkbox2">外食</label>
-                <input class="form-check-input" type="checkbox"  name="category" value="旅先" />
-                <label class="form-check-label" for="tag-checkbox2">旅先</label>
-                <input class="form-check-input" type="checkbox"  name="category" value="ラップアップ" />
-                <label class="form-check-label" for="tag-checkbox2">ラップアップ</label>
-                <input class="form-check-input" type="checkbox"  name="category" value="記念日" />
-                <label class="form-check-label" for="tag-checkbox2">記念日</label>
-      </div>
-    @endif --}}
 
     
     <p class="font-weight-bold" style="font-size: 1.2rem;"></p>
@@ -153,8 +137,6 @@
         {{ $tweet->story}}
         </div>
     
-
-
 
     <div class="mt-2">
 
