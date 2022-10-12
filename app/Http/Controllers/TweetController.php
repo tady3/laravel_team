@@ -316,7 +316,7 @@ class TweetController extends Controller
                     ->orwhere([['published', 1] ,['story', 'LIKE', '%'.$w .'%']])
                     ->orWhereHas('tags', function ($tag_query) use ($w )
                         {
-                        $tag_query->where('name', 'like', '%' . $w  . '%');
+                        $tag_query->where([['published', 1],['name', 'like', '%' . $w  . '%']]);
                         })
                     ->orderBy('created_at', 'desc'); // 追記          
                     };
