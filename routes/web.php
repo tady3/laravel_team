@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
     });
 
     // Route::get('/auth/redirect', [GoogleLoginController::class, 'getGoogleAuth']);
-    Route::get('/ridirect-to-google', [GoogleLoginController::class, 'getGoogleAuth']);
+    Route::get('/redirect-to-google', [GoogleLoginController::class, 'getGoogleAuth']);
     // Route::get('/login/callback', [GoogleLoginController::class, 'authGoogleCallback']);
     Route::get('/callback', [GoogleLoginController::class, 'authGoogleCallback']);
 
