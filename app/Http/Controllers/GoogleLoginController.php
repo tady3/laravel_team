@@ -50,7 +50,7 @@ class GoogleLoginController extends Controller
     Auth::login($user);
 
     // ログイン後のページへ
-    return redirect('http://factly.sakura.ne.jp/laravel_team/tweets-index');
+    return redirect('http://selfly-test-1.matrix.jp/tweets-index');
     }
 
 }
