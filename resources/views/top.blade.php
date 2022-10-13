@@ -51,7 +51,7 @@
                                     </a>
                                 </div>
                                 <div class="mb-2">
-                                    <a href="/redirect-to-google"  class="btn btn-primary btn-rounded font-weight-bold btn-lg shadow-1" style="width: 200px;" role="button">
+                                    <a href="laravel_team/redirect-to-google"  class="btn btn-primary btn-rounded font-weight-bold btn-lg shadow-1" style="width: 200px;" role="button">
                                         Google ログイン
                                     </a>
                                 </div>
