@@ -18,7 +18,7 @@
 </div>
 
 <div class="mb-2">
-    <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 1.6rem; text-align: center;">ジブンを造った「スキ」なコトバ</p>
+    <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 1.6rem; text-align: center;">ソウル（魂）に響いた「スキ」なコトバ</p>
 
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>    
     <div class="form-outline">

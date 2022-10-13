@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
                     'name' => 'TV'
                 ]);
                 \App\Models\Tag::create([
-                    'name' => '歌'
+                    'name' => '歌/音楽'
                 ]);
                 \App\Models\Tag::create([
                     'name' => 'ネット'
@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
                     'name' => '講演/プレゼンテーション'
                 ]);
                 \App\Models\Tag::create([
-                    'name' => '会話'
+                    'name' => '会話/インタビュー'
                 ]);
                 //コトバ用、タグ 1-9
 
@@ -86,6 +86,8 @@ class DatabaseSeeder extends Seeder
                 \App\Models\Tag::create([
                     'name' => '自分へのご褒美'
                 ]);
+                //Food用、タグ 10-15
+
 
                
 

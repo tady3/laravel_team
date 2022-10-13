@@ -9,7 +9,7 @@ class Tweet extends Model
 {
     use HasFactory;
             
-    protected $fillable = ['message','user_id','bywho','source','when','url','story','rate','published','img','card_type_id','withwho','location','category']; // 外部からの書き込みを許可するカラム
+    protected $fillable = ['message','user_id','bywho','source','when','url','story','rate','published','img','card_type_id','withwho','location','category','impact']; // 外部からの書き込みを許可するカラム
 
     //  // tweets テーブルではなく tweeeeeets テーブルを参照する
     //  protected $table = 'tweeeeeets'; // 設定を上書きしている  今の場合は、Tweetモデルはtweetテーブルと紐づくであろうと勝手に判断してくれるので特に紐付けのところについて書いていない。

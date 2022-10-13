@@ -35,6 +35,9 @@ return new class extends Migration
 
             $table->integer('rate')->nullable(); 
             $table->string('img')->nullable();
+
+            $table->string('impact')->nullable();
+
             $table->boolean('published')->nullable(); 
             $table->foreignId('card_type_id')->constrained(); 
             // <!-- 多田追記終了 -->
