@@ -10,9 +10,13 @@
                         @if($tweet->card_type_id==1)
                             <textarea class="form-control" id="text-area" rows="1" name="message" placeholder=" ">{{ $tweet->message }}</textarea>
                             <label class="form-label" for="text-area">コトバを入力</label>
-                        @else
+                        @elseif($tweet->card_type_id==2)
                             <textarea class="form-control" id="text-area" rows="1" name="message" placeholder=" ">{{ $tweet->message }}</textarea>
                             <label class="form-label" for="text-area">食事 or 飲み物</label>
+                        @else
+                            <textarea class="form-control" id="text-area" rows="1" name="message" placeholder=" ">{{ $tweet->message }}</textarea>
+                            <label class="form-label" for="text-area">メディア</label>
+
                         @endif        
                     </div>
                     
@@ -25,21 +29,29 @@
                                 <textarea class="form-control" id="text-area" rows="1" name="bywho" placeholder="">{{ $tweet->bywho }}</textarea>
                                 <label class="form-label" for="text-area">誰のコトバ？</label>
                             </div>
-                        @else
+                        @elseif($tweet->card_type_id==3)
+                        <div class="form-outline mb-2">
+                            <textarea class="form-control" id="text-area" rows="1" name="bywho" placeholder="">{{ $tweet->bywho }}</textarea>
+                            <label class="form-label" for="text-area">著者/制作者?</label>
+                        </div>
                         @endif
+                        
 
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
-                        
+
+                        @if ($tweet->card_type_id==3)
+                        @else
                         <div class="form-outline">
                             <textarea class="form-control" id="text-area" rows="1" name="source" placeholder="">{{ $tweet->source }}</textarea>
                              @if($tweet->card_type_id==1)    
                                 <label class="form-label" for="text-area">コトバの出所</label>
-                            @else
+                            @elseif ($tweet->card_type_id==2)
                                 <label class="form-label" for="text-area">店/場所の名前</label>
                             @endif
                         </div>
+                        @endif
 
-                        @if($tweet->card_type_id==1)
+                        @if($tweet->card_type_id==1 or 3)
                         @else 
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>    
                         <div class="form-outline mb-2">
@@ -71,24 +83,6 @@
                             </div>
                         @endforeach
                     </div>
-                    {{-- @else
-                    <div class="form-outline mb-2">
-                        <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox"  name="category" value="手作り" />
-                                <label class="form-check-label" for="tag-checkbox2">手作り</label>
-                        </div>
-                                <input class="form-check-input" type="checkbox"  name="category" value="外食" />          
-                                <label class="form-check-label" for="tag-checkbox2">外食</label>
-                                <input class="form-check-input" type="checkbox"  name="category" value="旅先" />
-                                <label class="form-check-label" for="tag-checkbox2">旅先</label>
-                                <input class="form-check-input" type="checkbox"  name="category" value="ラップアップ" />
-                                <label class="form-check-label" for="tag-checkbox2">ラップアップ</label>
-                                <input class="form-check-input" type="checkbox"  name="category" value="記念日" />
-                                <label class="form-check-label" for="tag-checkbox2">記念日</label>
-                        
-                      </div>
-                      @endif --}}
-
 
 
                     <!-- 多田追記 -->
@@ -116,11 +110,72 @@
                             <option value="家族と">家族と</option> 
                             <option value="会合・集まり">会合・集まり</option>
                         </select>
-                        @else
+                        @elseif($tweet->card_type_id==3)
+                        <div class="mb-2">
+                            <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">影響の種類</p>
+                            @php
+                                if(isset($tweet->impact))
+                                    {
+                                    $impacts=explode(",", $tweet->impact);
+                                    }
+                                @endphp
+                                現在の内容
+                                @foreach( $impacts as $impact )
+                                <span class="badge badge-pill badge-primary">{{$impact}}</span>
+                                @endforeach
+
+                            <div class="form-outline mb-2">
+                                <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="癒し/安心" />
+                                        <label class="form-check-label" for="tag-checkbox2">癒し/安心</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="憧れ/目標" />
+                                    <label class="form-check-label" for="tag-checkbox2">憧れ/目標</label>
+                                </div>
+                    
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="やる気/モチベ/心の支え" />
+                                    <label class="form-check-label" for="tag-checkbox2">やる気/モチベ/心の支え</label>
+                                </div>
+                    
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="モノゴト捉え方＆考え方" />
+                                    <label class="form-check-label" for="tag-checkbox2">モノゴト捉え方＆考え方</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="育児/家庭" />
+                                    <label class="form-check-label" for="tag-checkbox2">育児/家庭</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="健康/若さ" />
+                                    <label class="form-check-label" for="tag-checkbox2">健康/若さ</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="人間関係/恋愛" />
+                                    <label class="form-check-label" for="tag-checkbox2">人間関係/恋愛</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="スポーツ&トレーニング"" />
+                                    <label class="form-check-label" for="tag-checkbox2">スポーツ&トレーニング"</label>
+                                </div>
+                                <br>
+                    
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="就職/転職" />
+                                    <label class="form-check-label" for="tag-checkbox2">就職/転職</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="進学/留学" />
+                                    <label class="form-check-label" for="tag-checkbox2">進学/留学</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="スキルUP/資格" />
+                                    <label class="form-check-label" for="tag-checkbox2">スキルUP/資格</label>
+                                </div>
+                            </div>
+                        </div>
                         @endif
-
-
-
 
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;"></p>
                         

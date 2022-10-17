@@ -38,7 +38,8 @@
         <a href="{{ $tweet->url}}" style="font-size: 1.4rem; color: #953037; text-decoration:underline;">
             @if($tweet->card_type_id === 1)
             👤 "{{ $tweet->message }}"
-            @else🍽 {{ $tweet->message }}
+            @elseif($tweet->card_type_id === 2)🍽 {{ $tweet->message }}
+            @else📀{{ $tweet->message }}
             @endif
         </a>
 
@@ -112,7 +113,7 @@
         <span class="badge badge-pill badge-primary text-red">{{ $tweet->source }}</span>
         
         <span class="badge badge-pill badge-primary text-red">
-        @if($tweet->card_type_id==1){{ $tweet->bywho}}@else{{ $tweet->location}}@endif
+        @if($tweet->card_type_id==1 or 3){{ $tweet->bywho}}@else{{ $tweet->location}}@endif
         </span>
         @if($tweet->card_type_id==2)<span class="badge badge-pill badge-primary text-red">{{ $tweet->withwho}}</span>@else @endif
         <span class="badge badge-pill badge-primary text-red">{{ $tweet->when}}</span>
@@ -128,6 +129,24 @@
         @endforeach
     </div>
     {{-- tags 追記完了 --}}
+
+    <div class="mt-2 card-text">
+        @if($tweet->card_type_id==3)
+            @php
+            if(isset($tweet->impact))
+                {
+                $impacts=explode(",", $tweet->impact);
+                }
+            @endphp
+        
+            @foreach( $impacts as $impact )
+            <span class="badge badge-pill badge-primary">{{$impact}}</span>
+            @endforeach
+            
+        @else 
+        @endif
+        </span>
+    </div>
 
     
     <p class="font-weight-bold" style="font-size: 1.2rem;"></p>

@@ -112,12 +112,18 @@ class TweetController extends Controller
             'url' => $request['url'],
             'story' => $request['story'],
             'rate' => $request['rate'],
-            'published' => $request['published'],
+            'published' => $request['published'],            
             'card_type_id' => $request['card_type_id'],
             //多田追記、了
 
-            'user_id' => auth()->user()->id,          //ログイン中のユーザのIDを取ってきてそれをDBに入れる
+            'user_id' => auth()->user()->id,//ログイン中のユーザのIDを取ってきてそれをDBに入れる
         ]); 
+
+        if ($request->has('impact')) {
+            $impact = $request->impact; 
+            $string = implode(",", $impact);
+            $tweet->impact = $string;
+        }
         
 
         // アップロードされたファイル名を取得     
@@ -172,6 +178,18 @@ class TweetController extends Controller
         ]);
     }
 
+    public function showMedias()
+    {
+        // $tweets = Tweet::with(['user','tags'])
+        $tags = Tag::where('id','<=',9)->get();
+
+        // dd($tweets);
+
+        return view('tweets-media-form', [
+            'tags'=>$tags
+        ]);
+    }
+
     
     /**
      * Show the form for editing the specified resource.
@@ -184,7 +202,7 @@ class TweetController extends Controller
     {
         $this->authorize('update', $tweet); 
         
-        if($tweet->card_type_id == 1 )
+        if($tweet->card_type_id == 1 or 3)
         {
             $tags = Tag::where('id','<=',9)->get();
         }
@@ -215,7 +233,6 @@ class TweetController extends Controller
         $tweet->update([
             'message' => $request->message,
 
-        //多田追記
             'bywho' => $request->bywho,
             'source' => $request->source,
             'withwho' => $request->withwho,
@@ -227,10 +244,15 @@ class TweetController extends Controller
             'story' => $request->story,
             'rate' => $request->rate,
             'published' => $request->published,
-        //多田追記、了
-
-    ]);
     
+    ]);
+
+        if ($request->has('impact')) {
+            $impact = $request->impact; 
+            $string = implode(",", $impact);
+            $tweet->update(['impact' => $string]);
+        }
+
     //ファイルアップロード（新規作成）
     $file_name = $request->file('img');
     if($request->hasFile('img')){
@@ -313,6 +335,7 @@ class TweetController extends Controller
                     ->orwhere([['published', 1] ,['withwho', 'LIKE', '%'.$w .'%']])
                     ->orwhere([['published', 1] ,['source', 'LIKE', '%'.$w .'%']])
                     ->orwhere([['published', 1] ,['when', 'LIKE', '%'.$w .'%']])
+                    ->orwhere([['published', 1] ,['impact', 'LIKE', '%'.$w .'%']])
                     ->orwhere([['published', 1] ,['story', 'LIKE', '%'.$w .'%']])
                     ->orWhereHas('tags', function ($tag_query) use ($w )
                         {

@@ -5,7 +5,7 @@
   @csrf  
   {{-- セキュリティトークンを発行するためのメソッド。トークンがない投稿はLaravel上では受け付けられない。 --}}
 <div class="hidden">
-    <textarea class="form-control" id="text-area" rows="1" name="card_type_id">1</textarea>
+    <textarea class="form-control" id="text-area" rows="1" name="card_type_id">3</textarea>
 </div>
 <div class="flex justify-content-center">
     <img src="/img/icon.png" alt="" style="width: 40px;" class="mt-2 mb-2" style="margin :0,0,0,auto;">
@@ -35,20 +35,17 @@
 
     <div class="form-outline">
         <textarea class="form-control" id="text-area" rows="1" name="bywho" placeholder="">{{old('bywho')}}</textarea>
-        <label class="form-label" for="text-area">著者/制作者 ? : アイン・ランド</label>
+        <label class="form-label" for="text-area">著者/制作者? : アイン・ランド</label>
     </div>
 
-    <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
     
-
         <!-- 多田追記終了 -->
 </div>
 
 
-   {{-- タグ付け用チェックボックス ここから --}}
+{{-- タグ付け用チェックボックス ここから --}}
 <div class="mb-2">
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">メディアの種類</p>
-    
     <div class="form-outline mb-2">
         @foreach($tags as $tag)
         <div class="form-check form-check-inline">
@@ -74,6 +71,61 @@
         <option value="70代">70代</option>
         <option value="80代以上">80代以上</option>
     </select>
+
+    <div class="mb-2">
+        <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">影響の種類</p>
+        
+        <div class="form-outline mb-2">
+            <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="癒し/安心" />
+                    <label class="form-check-label" for="tag-checkbox2">癒し/安心</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="憧れ/目標" />
+                <label class="form-check-label" for="tag-checkbox2">憧れ/目標</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="やる気/モチベ/心の支え" />
+                <label class="form-check-label" for="tag-checkbox2">やる気/モチベ/心の支え</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="モノゴト捉え方＆考え方" />
+                <label class="form-check-label" for="tag-checkbox2">モノゴト捉え方＆考え方</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="育児/家庭" />
+                <label class="form-check-label" for="tag-checkbox2">育児/家庭</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="健康/若さ" />
+                <label class="form-check-label" for="tag-checkbox2">健康/若さ</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="人間関係/恋愛" />
+                <label class="form-check-label" for="tag-checkbox2">人間関係/恋愛</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="スポーツ&トレーニング"" />
+                <label class="form-check-label" for="tag-checkbox2">スポーツ&トレーニング"</label>
+            </div>
+            <br>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="就職/転職" />
+                <label class="form-check-label" for="tag-checkbox2">就職/転職</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="進学/留学" />
+                <label class="form-check-label" for="tag-checkbox2">進学/留学</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="スキルUP/資格" />
+                <label class="form-check-label" for="tag-checkbox2">スキルUP/資格</label>
+            </div>
+        </div>
+    </div>
 
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
 

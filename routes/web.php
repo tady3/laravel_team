@@ -31,6 +31,9 @@ use Illuminate\Support\Facades\Route;
     Route::get('/tweets-food-form', [TweetController::class, 'showFoods']);
     Route::post('/tweets-food-form', [TweetController::class, 'store'])->name('tweets.store');
 
+    Route::get('/tweets-media-form', [TweetController::class, 'showMedias']);
+    Route::post('/tweets-media-form', [TweetController::class, 'store'])->name('tweets.store');
+
 
 
 

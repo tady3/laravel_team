@@ -30,8 +30,13 @@ class DatabaseSeeder extends Seeder
                 ]);
         
                 \App\Models\CardType::create([
-                    'type' => 'Food & Drinks'
+                    'type' => '食事 & 飲み物'
                 ]);
+
+                \App\Models\CardType::create([
+                    'type' => 'メディア'
+                ]);
+
         
         // CardType追記終了
 
