@@ -53,9 +53,11 @@
             </div>
         </form>
         <div class="col-md-8 offset-md-4">
+            @auth
             <a href="/ridirect-to-google" class="btn btn-secondary" role="button">
                 Google Login
             </a>
+            @endauth
         </div>
     </x-auth-card>
 </x-guest-layout>
