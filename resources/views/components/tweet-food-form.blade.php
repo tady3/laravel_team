@@ -107,6 +107,64 @@
         <option value="会合・集まり">会合・集まり</option>
     </select>
 
+    <div class="mb-2">
+        <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">影響の種類</p>
+        
+        <div class="form-outline mb-2">
+            <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="癒し/安心" />
+                    <label class="form-check-label" for="tag-checkbox2">癒し/安心</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="憧れ/目標" />
+                <label class="form-check-label" for="tag-checkbox2">憧れ/目標</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="やる気/モチベ/心の支え" />
+                <label class="form-check-label" for="tag-checkbox2">やる気/モチベ/心の支え</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="モノゴト捉え方＆考え方" />
+                <label class="form-check-label" for="tag-checkbox2">モノゴト捉え方＆考え方</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="育児/家庭" />
+                <label class="form-check-label" for="tag-checkbox2">育児/家庭</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="健康/若さ" />
+                <label class="form-check-label" for="tag-checkbox2">健康/若さ</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="人間関係/恋愛" />
+                <label class="form-check-label" for="tag-checkbox2">人間関係/恋愛</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="スポーツ&トレーニング"" />
+                <label class="form-check-label" for="tag-checkbox2">スポーツ&トレーニング"</label>
+            </div>
+            <br>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="就職/転職" />
+                <label class="form-check-label" for="tag-checkbox2">就職/転職</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="進学/留学" />
+                <label class="form-check-label" for="tag-checkbox2">進学/留学</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="スキルUP/資格" />
+                <label class="form-check-label" for="tag-checkbox2">スキルUP/資格</label>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
 
 

@@ -110,19 +110,24 @@
                             <option value="家族と">家族と</option> 
                             <option value="会合・集まり">会合・集まり</option>
                         </select>
-                        @elseif($tweet->card_type_id==3)
+                        @endif
+
+                        @if($tweet->card_type_id==1||$tweet->card_type_id==2||$tweet->card_type_id==3)
                         <div class="mb-2">
                             <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">影響の種類</p>
                             @php
-                                if(isset($tweet->impact))
+                                if(!empty($tweet->impact))
                                     {
                                     $impacts=explode(",", $tweet->impact);
+                                foreach( $impacts as $impact ){
+                                }
                                     }
+                                else{
+                                    $impact=("");
+                                }
                                 @endphp
                                 現在の内容
-                                @foreach( $impacts as $impact )
                                 <span class="badge badge-pill badge-primary">{{$impact}}</span>
-                                @endforeach
 
                             <div class="form-outline mb-2">
                                 <div class="form-check form-check-inline">
