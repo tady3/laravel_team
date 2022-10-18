@@ -112,7 +112,7 @@
         <div class="form-outline mb-2">
 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="癒し/安心" />
+                <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="感動/共感" />
                 <label class="form-check-label" for="tag-checkbox2">感動/共感</label>
             </div>
         
