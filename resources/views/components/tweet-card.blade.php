@@ -131,21 +131,23 @@
     {{-- tags 追記完了 --}}
 
     <div class="mt-2 card-text">
-        {{-- @if($tweet->card_type_id==3) --}}
         @php
         if(!empty($tweet->impact))
             {
             $impacts=explode(",", $tweet->impact);
-        foreach( $impacts as $impact ){
-        }
+        
             }
         else{
             $impact=("");
         }
         @endphp
-            <span class="badge badge-pill badge-primary">{{$impact}}</span>
-        {{-- @else 
-        @endif --}}
+        @if(!empty($tweet->impact))
+           @foreach( $impacts as $impact )
+           <span class="badge badge-pill badge-primary">{{$impact}}</span>
+           @endforeach
+        @else
+        <span class="badge badge-pill badge-primary">{{$impact}}</span>
+        @endif
         </span>
     </div>
 
