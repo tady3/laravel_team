@@ -53,7 +53,7 @@
             </div>
         </form>
         <div class="col-md-8 offset-md-4">
-            <a href="/ridirect-to-google" class="btn btn-secondary" role="button">
+            <a href="/redirect-to-google" class="btn btn-secondary" role="button">
                 Google Login
             </a>
         </div>
