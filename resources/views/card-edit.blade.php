@@ -115,19 +115,25 @@
                         @if($tweet->card_type_id==1||$tweet->card_type_id==2||$tweet->card_type_id==3)
                         <div class="mb-2">
                             <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">影響の種類</p>
+
                             @php
-                                if(!empty($tweet->impact))
-                                    {
-                                    $impacts=explode(",", $tweet->impact);
-                                foreach( $impacts as $impact ){
+                            if(!empty($tweet->impact))
+                                {
+                                $impacts=explode(",", $tweet->impact);
+                            
                                 }
-                                    }
-                                else{
-                                    $impact=("");
-                                }
-                                @endphp
-                                現在の内容
-                                <span class="badge badge-pill badge-primary">{{$impact}}</span>
+                            else{
+                                $impact=("");
+                            }
+                            @endphp
+                            現在の内容
+                            @if(!empty($tweet->impact))
+                               @foreach( $impacts as $impact )
+                               <span class="badge badge-pill badge-primary">{{$impact}}</span>
+                               @endforeach
+                            @else
+                            <span class="badge badge-pill badge-primary">{{$impact}}</span>
+                            @endif
 
                             <div class="form-outline mb-2">
                                 <div class="form-check form-check-inline">
