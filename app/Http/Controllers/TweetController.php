@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CardType;
+use App\Models\Comment;
 use App\Models\Tag;
 use App\Models\User;
 use App\Models\Tweet;
@@ -348,7 +349,7 @@ class TweetController extends Controller
             
             $tweets[] = $query->get(); //検索結果が配列になったものをとってきている 
 
-                    dd($tweets);
+                    // dd($tweets);
 
     
 
@@ -409,15 +410,13 @@ class TweetController extends Controller
     return redirect()->back();
   }
 
-  
+
   public function LikeCardsindex()
   {
     return redirect('likes-index/'.auth()->user()->id); 
 
   }
       // $tweets = Tweet::all(); //全て取ってくるというメソッド。
-
-
 
   public function showLikeCardsIndex($id)
   {   
@@ -453,7 +452,54 @@ class TweetController extends Controller
         $card_likes =CardLike::all(); //card_likesから全て取ってくる
         return view('likes-index',compact('tweets','tags','card_likes')
         );
-    
-    
 }
+
+public function Commentsindex()
+{
+  return redirect('comments-index/'.auth()->user()->id); 
+
+}
+
+
+public function showCommentsIndex($id)
+{   
+    $user_id = auth()->user()->id;
+    //$idの中身が"user_id"でダブルクオテーションがどうしてもエスケープできなかったので、user_idにダブルクォテーションをつけた
+    $user_id = stripslashes($user_id); 
+  //   $query = Tweet::with(['user','tags']);
+  //   $query = Tweet::query();
+    $lcs = Comment::with('tweet','user') ->where('user_id', $user_id)->get();
+    // dd($lcs[0]);
+
+
+    $n = count($lcs); //該当するいいねの数を数える
+    // dd($n);
+  if($n>0)
+  {
+    $tIDs = []; //配列を宣言
+    for ($i=0; $i<$n; $i++) {
+        $tIDs[] = addcslashes(($lcs[$i])->tweet_id, '\\_%');    //入力した言葉をエスケープ化し、言葉を配列に入れるということを、入力した言葉の数だけ繰り返す
+    }
+    $tids = array_unique($tIDs);
+
+        //   dd($tids);
+      // $tweets=[];
+      foreach( $tids as $tid){
+                      // dd($tid);
+              $tweets[] = Tweet::where('id', $tid)
+              ->orderBy('created_at','desc')
+              // dd($tweet);
+              ->get(); //Eager Loadの描き方
+                  };
+      // dd($tw);
+      // dd($tweets);
+  }
+
+      $tags = Tag::all();
+      $card_likes =CardLike::all(); //card_likesから全て取ってくる
+      return view('comments-index',compact('tweets','tags','card_likes')
+      );
+}
+
+
 }

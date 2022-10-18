@@ -26,8 +26,10 @@ class CommentsController extends Controller
             'user_id' => auth()->user()->id,          //ログイン中のユーザのIDを取ってきてそれをDBに入れる
         ]); 
         
-        return redirect(route('tweets.showTweetsIndex',[
-            'user'=> $user_id]));                      //tweet-index/user_idとして、投稿者の投稿一覧に戻っている
+        return redirect()->back();
+        
+        // redirect(route('tweets.index',[
+        //     'user'=> $user_id]));                      //tweet-index/user_idとして、投稿者の投稿一覧に戻っている
     }
  
 

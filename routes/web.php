@@ -28,6 +28,10 @@ use Illuminate\Support\Facades\Route;
     Route::get('/likes-index', [TweetController::class, 'LikeCardsindex'])->name('likes.index');
     Route::get('/likes-index/{user}', [TweetController::class, 'showLikeCardsIndex'])->name('likes.showLikeCardsIndex');
 
+    Route::get('/comments-index', [TweetController::class, 'Commentsindex'])->name('comments.index');
+    Route::get('/comments-index/{user}', [TweetController::class, 'showCommentsIndex'])->name('comments.showCommentsIndex');
+
+
 
 
     Route::get('/tweets-form', [TweetController::class, 'show']);
