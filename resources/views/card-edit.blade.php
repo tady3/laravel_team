@@ -131,6 +131,10 @@
 
                             <div class="form-outline mb-2">
                                 <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="癒し/安心" />
+                                    <label class="form-check-label" for="tag-checkbox2">感動/共感</label>
+                                </div>
+                                <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="癒し/安心" />
                                         <label class="form-check-label" for="tag-checkbox2">癒し/安心</label>
                                 </div>
@@ -162,7 +166,7 @@
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" id="impact" name="impact[]" value="スポーツ&トレーニング"" />
-                                    <label class="form-check-label" for="tag-checkbox2">スポーツ&トレーニング"</label>
+                                    <label class="form-check-label" for="tag-checkbox2">スポーツ&トレーニング</label>
                                 </div>
                                 <br>
                     
