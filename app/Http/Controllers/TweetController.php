@@ -26,13 +26,12 @@ class TweetController extends Controller
         // $tweets = Tweet::all(); //全て取ってくるというメソッド。
         
 
-
     public function showTweetsIndex($id)
     {   
         $user_id = auth()->user()->id;
 
         //$idの中身が"user_id"でダブルクオテーションがどうしてもエスケープできなかったので、user_idにダブルクォテーションをつけた
-        $usr_id = stripslashes($user_id); 
+        $user_id = stripslashes($user_id); 
         
         $tweets = Tweet::with(['user','tags']);
 
@@ -56,6 +55,7 @@ class TweetController extends Controller
             ->get(); //Eager Loadの描き方
     
         }
+        // dd($tweets);
         $tags = Tag::all();
         $card_likes =CardLike::all(); //card_likesから全て取ってくる
 
@@ -202,7 +202,7 @@ class TweetController extends Controller
     {
         $this->authorize('update', $tweet); 
         
-        if($tweet->card_type_id == 1 or 3)
+        if($tweet->card_type_id == 1 || $tweet->card_type_id==3)
         {
             $tags = Tag::where('id','<=',9)->get();
         }
@@ -347,6 +347,9 @@ class TweetController extends Controller
 
             
             $tweets[] = $query->get(); //検索結果が配列になったものをとってきている 
+
+                    dd($tweets);
+
     
 
             $nt=count($tweets[0]);   //検索結果の配列の数を数える。[0]を入れることで階層を一つ下げている。
@@ -406,8 +409,51 @@ class TweetController extends Controller
     return redirect()->back();
   }
 
+  
+  public function LikeCardsindex()
+  {
+    return redirect('likes-index/'.auth()->user()->id); 
+
+  }
+      // $tweets = Tweet::all(); //全て取ってくるというメソッド。
 
 
 
+  public function showLikeCardsIndex($id)
+  {   
+      $user_id = auth()->user()->id;
+      //$idの中身が"user_id"でダブルクオテーションがどうしてもエスケープできなかったので、user_idにダブルクォテーションをつけた
+      $user_id = stripslashes($user_id); 
+    //   $query = Tweet::with(['user','tags']);
+    //   $query = Tweet::query();
+      $lcs = CardLike::with('tweet','user') ->where('user_id', $user_id)->get();
+    //     dd($likecards);
+      $n = count($lcs); //該当するいいねの数を数える
+    //   dd($n);
+    if($n>0)
+    {
+      $tids = []; //配列を宣言
+      for ($i=0; $i<$n; $i++) {
+          $tids[] = addcslashes(($lcs[$i])->tweet_id, '\\_%');    //入力した言葉をエスケープ化し、言葉を配列に入れるということを、入力した言葉の数だけ繰り返す
+      }
+            // dd($tids);
+        // $tweets=[];
+        foreach( $tids as $tid){
+                        // dd($tid);
+                $tweets[] = Tweet::where('id', $tid)
+                ->orderBy('created_at','desc')
+                // dd($tweet);
+                ->get(); //Eager Loadの描き方
+                    };
+        // dd($tw);
+        // dd($tweets);
+    }
 
+        $tags = Tag::all();
+        $card_likes =CardLike::all(); //card_likesから全て取ってくる
+        return view('likes-index',compact('tweets','tags','card_likes')
+        );
+    
+    
+}
 }

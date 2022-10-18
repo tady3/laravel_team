@@ -37,7 +37,7 @@
                         @endif
                         
 
-                        <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
+                        {{-- <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p> --}}
 
                         @if ($tweet->card_type_id==3)
                         @else
@@ -51,13 +51,13 @@
                         </div>
                         @endif
 
-                        @if($tweet->card_type_id==1 or 3)
-                        @else 
+                        @if($tweet->card_type_id==2)
                         <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>    
                         <div class="form-outline mb-2">
                             <textarea class="form-control" id="text-area" rows="1" name="location" placeholder="">{{ $tweet->location }}</textarea>
                             <label class="form-label" for="text-area">ロケーション？</label>
                         </div>
+                        @else  
                         @endif
     
                     </div>       

@@ -113,7 +113,7 @@
         <span class="badge badge-pill badge-primary text-red">{{ $tweet->source }}</span>
         
         <span class="badge badge-pill badge-primary text-red">
-        @if($tweet->card_type_id==1 or 3){{ $tweet->bywho}}@else{{ $tweet->location}}@endif
+        @if($tweet->card_type_id==1 || $tweet->card_type_id==3){{ $tweet->bywho}}@elseif($tweet->card_type_id==2) {{ $tweet->location}}@endif
         </span>
         @if($tweet->card_type_id==2)<span class="badge badge-pill badge-primary text-red">{{ $tweet->withwho}}</span>@else @endif
         <span class="badge badge-pill badge-primary text-red">{{ $tweet->when}}</span>

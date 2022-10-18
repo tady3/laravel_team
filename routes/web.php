@@ -24,6 +24,11 @@ use Illuminate\Support\Facades\Route;
     Route::get('/tweets-index', [TweetController::class, 'index'])->name('tweets.index');
     Route::post('/tweets-index', [TweetController::class, 'store'])->name('tweets.store');
     Route::get('/tweets-index/{user}', [TweetController::class, 'showTweetsIndex'])->name('tweets.showTweetsIndex');
+    
+    Route::get('/likes-index', [TweetController::class, 'LikeCardsindex'])->name('likes.index');
+    Route::get('/likes-index/{user}', [TweetController::class, 'showLikeCardsIndex'])->name('likes.showLikeCardsIndex');
+
+
 
     Route::get('/tweets-form', [TweetController::class, 'show']);
     Route::post('/tweets-form', [TweetController::class, 'store'])->name('tweets.store');
@@ -73,14 +78,6 @@ use Illuminate\Support\Facades\Route;
     //友達ステータス変更
     Route::put('/friend-index/{friend_id}', [FriendController::class, 'update'])->name('friend.update');
     
-    // Route::get('/friend-index', function () {
-    //     return view('friend-index');
-    // })->name('friend.index');
-    
-
-    // Route::get('/test', function () {
-    // return view('test');
-    // });
 
 
     });
