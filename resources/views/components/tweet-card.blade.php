@@ -143,10 +143,10 @@
         @endphp
         @if(!empty($tweet->impact))
            @foreach( $impacts as $impact )
-           <span class="badge badge-pill badge-primary">{{$impact}}</span>
+           <span class="badge badge-pill badge-danger text-dark">{{$impact}}</span>
            @endforeach
         @else
-        <span class="badge badge-pill badge-primary">{{$impact}}</span>
+        <span class="badge badge-pill badge-danger text-dark">{{$impact}}</span>
         @endif
         </span>
     </div>
