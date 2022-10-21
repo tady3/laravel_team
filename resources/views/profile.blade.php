@@ -71,20 +71,25 @@
         
       </div>
         
-      <div class="w-full p-8 mx-2 flex justify-center" style="position: relative;">
-          
-        <img id="showImage" class="max-w-xs w-32 items-center border" src="{{ '/storage/' . $user['img']}}" alt="">
-
-        @if($user->id === auth()->user()->id)
+      <div class="w-full p-8 mx-2 flex justify-center" style="position: relative;">     
+          @if(isset($user->img))
+              <img id="showImage" class="max-w-xs w-32 items-center border" src="{{'/storage/'. $user['img']}}" alt="">
+          @else
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                  </svg>
+          @endif
           <a href="/profile-upload">
             <div style="position: absolute; top: 75%;left: 60%; background-color: white">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
             </div>
           </a>
-        @else <p></p>
-        @endif
-        
-    </div>
+        </div>
+
+
+
+
+
       {{-- ↓ユーザーidがログインしているユーザーIDと一致している時だけ、以下を表示する --}}
       @if($user->id === auth()->user()->id)
         
