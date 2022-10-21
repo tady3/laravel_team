@@ -25,7 +25,7 @@
         <div class="w-full p-8 mx-2 flex justify-center" style="position: relative;">
           
             <img id="showImage" class="max-w-xs w-32 items-center border" src="{{ '/storage/' . $user['img']}}" alt="">
-
+{{-- 
             @if($user->id === auth()->user()->id)
               <a href="/profile-upload">
                 <div style="position: absolute; top: 75%;left: 60%; background-color: white">
@@ -33,7 +33,7 @@
                 </div>
               </a>
             @else <p></p>
-            @endif
+            @endif --}}
             
         </div>
       
