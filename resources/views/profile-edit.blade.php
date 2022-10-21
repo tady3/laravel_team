@@ -45,7 +45,7 @@
             <input type="text" id="base-input" name="name" value="{{$user->name}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
             <label for="base-input" class="mt-2 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">ユーザー名</label>
-            <input type="text" id="base-input" name="nickname" value="{{$user->nickname}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <input type="text" id="base-input" name="nickname" value="{{$user->nickname}}" placeholder="アプリ内で表示される名前を入力" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
             <label for="base-input" class="mt-2 block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">サーチID</label>
             <input type="text" id="base-input" name="search_id" value="{{$user->search_id}}" placeholder="友達検索用のIDを入力" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
