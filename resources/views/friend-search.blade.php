@@ -29,13 +29,13 @@
                               <tbody>
 
                                 <tr class="bg-white border-b">
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                  <td class="px-1 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                       <img class="w-10 h-10 rounded-full" src="{{ '/storage/' . $user->img}}" alt="avatar">
                                   </td>
-                                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                  <td class="text-sm text-gray-900 font-light px-1 py-4 whitespace-nowrap">
                                       {{ $user->nickname }}
                                   </td>
-                                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                  <td class="text-sm text-gray-900 font-light px-1 py-4 whitespace-nowrap">
                                       @if($user->gender === 1)<span>男性</span>@elseif($user->gender === 2)<span>女性</span>@else<span>指定なし</span>@endif
                                       ：@if($user->age === 1)<span>10歳未満</span>@endif
                                       @if($user->age === 2)<span>10代</span>@endif
@@ -71,7 +71,7 @@
                                     
 
                                   </td>
-                                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                  <td class="text-sm text-gray-900 font-light px-1 py-4 whitespace-nowrap">
                                       <form action="/friend-index" method="POST">
                                           @csrf  
                                       <div class="flex space-x-2 justify-center">
