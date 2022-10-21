@@ -439,7 +439,7 @@ class TweetController extends Controller
         // $tweets=[];
         foreach( $tids as $tid){
                         // dd($tid);
-                $tweets[] = Tweet::where('id', $tid)
+                $tweets[] = Tweet::where([['published', 1] , ['id', $tid]])
                 ->orderBy('created_at','desc')
                 // dd($tweet);
                 ->get(); //Eager Loadの描き方
@@ -486,7 +486,7 @@ public function showCommentsIndex($id)
       // $tweets=[];
       foreach( $tids as $tid){
                       // dd($tid);
-              $tweets[] = Tweet::where('id', $tid)
+              $tweets[] = Tweet::where([['published', 1] , ['id', $tid]])
               ->orderBy('created_at','desc')
               // dd($tweet);
               ->get(); //Eager Loadの描き方
