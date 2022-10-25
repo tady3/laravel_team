@@ -146,7 +146,7 @@
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
 
     <div class="form-outline">
-        <textarea class="form-control" id="text-area" rows="1" name="url" placeholder="リンク先URL ?">{{old('url')}}</textarea>
+        <textarea class="form-control" id="text-area" rows="1" name="url" placeholder="リンク先URL:amazonはエラーになりやすいので、googleブックス等他のURLを入れてください">{{old('url')}}</textarea>
     </div>
             
     <p class="mb-1 text-gray-400 font-weight-bold" style="font-size: 0.8rem;">　</p>
